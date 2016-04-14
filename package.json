@@ -1,0 +1,31 @@
+{
+  "name": "bykeasoc-register",
+  "version": "1.0.0",
+  "description": "Register app for byke asoc",
+  "main": "app.js",
+  "scripts": {
+    "test": "app-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kszosze/bykeasoc-reg.git"
+  },
+  "keywords": [
+    "Byke",
+    "Association",
+    "Register"
+  ],
+  "author": "kszosze",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kszosze/bykeasoc-reg/issues"
+  },
+  "homepage": "https://github.com/kszosze/bykeasoc-reg#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "jsonwebtoken": "^5.7.0",
+    "mongoose": "^4.4.12",
+    "morgan": "^1.7.0"
+  }
+}
