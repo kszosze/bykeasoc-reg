@@ -1,8 +1,8 @@
 var express = require('express');
-var router = express.router();
+var router = express.Router();
 var bodyParser = require('body-parser');
+var Race = require('../model/race');
 var parseUrlencoded = bodyParser.urlencoded({extended:false});
-var Race   = require('./app/models/race'); // get our mongoose model
 
 router.route('/')
 .get(function(req,res){

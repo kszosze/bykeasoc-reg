@@ -4,31 +4,31 @@ var Schema = mongoose.Schema;
 
 // set up a mongoose model and pass it using module.exports
 module.exports = mongoose.model('Race', new Schema({
-    id: String;
-    name: String,
-    date: Date,
+    id:String,
+    name:String,
+    date:Date,
     start_registration:Date,
     end_registration:Date,
-    price: Double,
-    startPoint: String,
-    endPoint: String,
-    distance: String,
-    duration: String,
+    price:Number,
+    startPoint:String,
+    endPoint:String,
+    distance:String,
+    duration:String,
     organiser_id:String,
-    fee:[
+    fee:[{
       id:String,
       category:String,
       conditions:String,
       pre_register:Boolean,
       pra_paid:Boolean,
-      fee:Double,
-    ],
+      fee:Number
+    }],
     participants: [{
       user_id: String,
       subscribedOn: Date,
       category: String,
       licence: String,
-      club_id: String
+      club_id: String,
       paid: Boolean
     }]
 }));

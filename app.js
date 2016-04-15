@@ -11,6 +11,8 @@ var config = require('./config'); // get our config file
 var races = require('./routes/races');
 var users = require('./routes/users');
 var clubs = require('./routes/clubs');
+var bodyParser = require('body-parser');
+var parseUrlencoded = bodyParser.urlencoded({extended:false});
 
 var app = express();
 

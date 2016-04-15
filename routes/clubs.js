@@ -1,8 +1,8 @@
 var express = require('express');
-var router = express.router();
+var router = express.Router();
 var bodyParser = require('body-parser');
 var parseUrlencoded = bodyParser.urlencoded({extended:false});
-var Club   = require('./app/models/club'); // get our mongoose model
+var Club   = require('../model/club'); // get our mongoose model
 
 router.route('/')
 .get(function(req,res){
