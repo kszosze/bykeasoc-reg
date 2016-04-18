@@ -3,13 +3,15 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // set up a mongoose model and pass it using module.exports
-var Club = mongoose.model('Club', new Schema({
+var clubSchema = new Schema({
     id: String,
     name: String,
     contact_id: String,
     web_page: String,
     location: String,
     active: Boolean
-}));
-
-module.exports = Club;
+});
+try{
+   mongoose.model('Club',clubSchema);
+}catch(error){}
+module.exports = mongoose.model('Club');

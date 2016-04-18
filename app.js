@@ -34,13 +34,13 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 
-app.use(session({
+/*app.use(session({
   secret: 'My super session secret',
   cookie: {
     httpOnly: true,
     secure: true
   }
-}));
+}));*/
 
 app.use(csrf());
 
