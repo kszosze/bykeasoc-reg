@@ -3,13 +3,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // set up a mongoose model and pass it using module.exports
-module.exports = mongoose.model('Race', new Schema({
+var raceSchema = new Schema({
     id:String,
     name:String,
     date:Date,
     start_registration:Date,
     end_registration:Date,
-    price:Number,
     startPoint:String,
     endPoint:String,
     distance:String,
@@ -20,15 +19,20 @@ module.exports = mongoose.model('Race', new Schema({
       category:String,
       conditions:String,
       pre_register:Boolean,
-      pra_paid:Boolean,
+      pre_paid:Boolean,
       fee:Number
     }],
     participants: [{
       user_id: String,
       subscribedOn: Date,
       category: String,
+      fee_id:String,
       licence: String,
       club_id: String,
       paid: Boolean
     }]
-}));
+});
+try{
+  mongoose.model('Race',raceSchema);
+}catch(error){}
+module.exports = mongoose.model('Race');

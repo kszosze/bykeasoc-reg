@@ -41,7 +41,7 @@ describe('Clubs', function(){
   });
 
   it('Can find a club', function(done){
-        Club.find({id:"001"},function(error,foundClub){
+        Club.findOne({id:"001"},function(error,foundClub){
         should.not.exist(error);
         foundClub.name.should.equal("The Spinning wheels");
         foundClub.location.should.equal("DrumDrum");
