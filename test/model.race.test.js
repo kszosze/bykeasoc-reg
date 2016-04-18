@@ -41,7 +41,17 @@ describe('Races', function(){
           pra_paid:false,
           fee:20
         }],
-        participants: []
+        participants: [
+          {
+            user_id: "001",
+            subscribedOn: new Date("2026","06","01"),
+            category: "Senior 40+",
+            fee_id:"001",
+            licence: "Full UK",
+            club_id: "001",
+            paid: true
+          }
+        ]
     };
     Race.create(race,function(error){
       assert.ifError(error);
@@ -125,12 +135,12 @@ describe('Races', function(){
 
   it ('Can add a participant to the race', function(done){
     var participant = {
-      user_id: "001",
+      user_id: "002",
       subscribedOn: new Date("2026","06","01"),
       category: "Senior 40+",
-      fee_id:"001",
+      fee_id:"002",
       licence: "Full UK",
-      club_id: "001",
+      club_id: "002",
       paid: true
     };
     Race.update({id:"001"},{"$push":{"participants":participant}},function(error,foundRace){
@@ -138,6 +148,16 @@ describe('Races', function(){
       should.exist(foundRace);
       should.exist(foundRace.participants);
       expect(foundRace.participants).to.contain( participant );
+    });
+    done();
+  });
+
+  it ('Can remove a participant from a race', function(done){
+    Race.update({id:"001"},{"$pull":{"participants.user_id":"001"}},function(error,foundRace){
+      should.not.exist(error);
+      should.exist(foundRace);
+      should.exist(foundRace.participants);
+      expect(foundRace.participants.lenght).to.be(0);
     });
     done();
   });
