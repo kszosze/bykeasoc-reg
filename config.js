@@ -1,4 +1,8 @@
 module.exports = {
     'secret': 'ilovescotchyscotch',
-    'database': 'mongodb://localhost:27017/bykeasoc'
+     db: {
+       test: 'mongodb://127.0.0.1:27017/bykeasoc-test',
+       development: 'mongodb://127.0.0.1:27017/bykeasoc-dev',
+       production: 'mongodb://127.0.0.1:27017/bykeasoc'
+    }
 };

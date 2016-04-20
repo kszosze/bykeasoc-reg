@@ -1,7 +1,7 @@
 'use strict';
 var assert = require('assert');
 var expect = require('chai').expect;
-var should = require('chai').should()
+var should = require('chai').should();
 var utils = require('./utils');
 var Race = require('../model/race');
 
@@ -46,7 +46,7 @@ describe('Races', function(){
             user_id: "001",
             subscribedOn: new Date("2026","06","01"),
             category: "Senior 40+",
-            fee_id:"001",
+            fee_id: "001",
             licence: "Full UK",
             club_id: "001",
             paid: true
@@ -97,7 +97,7 @@ describe('Races', function(){
     };
     Race.create(race,function(error, newRace){
       should.not.exist(error);
-      should.exists(newRace);
+      should.exist(newRace);
       newRace.name.should.equal("The small race ever");
       newRace.startPoint.should.equal("Cave Hill");
     });
@@ -108,10 +108,24 @@ describe('Races', function(){
   it('Can find a race', function(done){
         Race.findOne({id:"001"},function(error,foundRace){
         should.not.exist(error);
-        should.exists(foundRace);
+        should.exist(foundRace);
         foundRace.name.should.equal("The big race ever");
         foundRace.startPoint.should.equal("The Mournes");
     });
+    done();
+  });
+
+  it('Can remove a race', function(done){
+      Race.findOneAndRemove({id:"001"},function(error,removedRace){
+          should.not.exist(error);
+          should.exist(removedRace);
+          removedRace.name.should.equal("The big race ever");
+          removedRace.startPoint.should.equal("The Mournes");
+      });
+      Race.findOne({id:"001"},function(error,foundRace){
+        should.not.exist(error);
+        should.not.exist(foundRace);
+      });
     done();
   });
 
@@ -128,7 +142,7 @@ describe('Races', function(){
         updateRace.duration.should.equal(15);
         updateRace.distance.should.equal(300);
         updateRace.endPoint.should.equal("Hillsboroug");
-        updateRace.startPoint.should.equals("The Mournes")
+        updateRace.startPoint.should.equals("The Mournes");
       });
     done();
   });

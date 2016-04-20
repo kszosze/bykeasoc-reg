@@ -7,10 +7,10 @@ var userSchema = new Schema({
     id: String,
     name: String,
     surname: String,
-    dob:Date,
+    dob: Date,
     password: String,
     admin: Boolean,
-    active:Boolean
+    active: Boolean
 });
 
 try {
