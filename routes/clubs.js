@@ -17,7 +17,7 @@ router.route('/')
 
 router.route('/:club_id')
 .get(function(req,res){
-  var clubId = req.param('club_id');
+  var clubId = req.params['club_id'];
   Club.findOne({id:clubId},function(error,foundClub){
     if (error) {
       console.log('got an error');
@@ -26,7 +26,7 @@ router.route('/:club_id')
   });
 })
 .put(parseUrlencoded,function(req,res){
-  Club.findOneAndUpdate({id:req.param('club_id')},req.body,{new: true},function(error,updateClub){
+  Club.findOneAndUpdate({id:req.params['club_id']},req.body,{new: true},function(error,updateClub){
     if (error) {
       console.log('got an error');
     }
@@ -34,7 +34,7 @@ router.route('/:club_id')
   });
 })
 .delete(function(req,res){
-  var clubId = req.param('club_id');
+  var clubId = req.params['club_id'];
   Club.findOneAndUpdate({id:clubId},{active:false},{new:true},function(error,removedClub){
     res.json(removedClub);
   });

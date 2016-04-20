@@ -19,7 +19,7 @@ describe('Races', function(){
         distance:200,
         duration:12,
         organiser_id:"001",
-        fee:[{
+        fees:[{
           id:"001",
           category:"Senior 40+",
           conditions:"Be older than 40 years",
@@ -71,7 +71,7 @@ describe('Races', function(){
         distance:10,
         duration:2,
         organiser_id:"001",
-        fee:[{
+        fees:[{
           id:"001",
           category:"Senior 40+",
           conditions:"Be older than 40 years",
