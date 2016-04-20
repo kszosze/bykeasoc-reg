@@ -16,14 +16,10 @@ var parseUrlencoded = bodyParser.urlencoded({extended:false});
 
 var app = express();
 
-app.use('/races',races);
-app.use('/users',users);
-app.use('/clubs',clubs);
-
 // =======================
 // configuration =========
 // =======================
-var port = process.env.PORT || 8080; // used to create, sign, and verify tokens
+var port = process.env.PORT || 3000; // used to create, sign, and verify tokens
 mongoose.connect(config.db[app.settings.env],function(err){
  if (err) console.error.bind(console, 'connection error:');
 });
@@ -48,10 +44,10 @@ app.use(morgan('dev'));
   }
 }));*/
 
-app.use(csrf());
+//app.use(csrf());
 
 app.use(function(req, res, next) {
-  res.locals._csrf = req.csrfToken();
+  //res.locals._csrf = req.csrfToken();
   next();
 });
 
@@ -67,3 +63,14 @@ app.route('/login')
 .post(parseUrlencoded,function(req,res){
 
 });
+
+app.use('/races',races);
+app.use('/users',users);
+app.use('/clubs',clubs);
+
+if(!module.parent){
+    app.listen(port,function(){
+      console.log("I am listening at PORT %d",port);
+    });
+ }
+module.exports = app;

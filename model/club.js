@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var clubSchema = new Schema({
     id: String,
     name: String,
-    contact_id: String,
+    contactId: String,
     web_page: String,
     location: String,
     active: Boolean
