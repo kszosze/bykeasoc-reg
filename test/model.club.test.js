@@ -11,7 +11,7 @@ describe('Clubs', function(){
     var club = {
       id: "001",
       name: "The Spinning wheels",
-      contact_id: "001",
+      contactId: "001",
       web_page: "www.thespinningwheels.co.uk",
       location: "DrumDrum",
       active: true
@@ -26,7 +26,7 @@ describe('Clubs', function(){
     var club = {
       id: "003",
       name: "The wheels on fire",
-      contact_id: "002",
+      contactId: "002",
       web_page: "www.thewheelsonfire.co.uk",
       location: "Belfast",
       active: true
