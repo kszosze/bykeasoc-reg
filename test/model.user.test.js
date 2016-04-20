@@ -10,8 +10,8 @@ describe('Users', function(){
   beforeEach(function(done){
     var user = {
       id: "001",
-      name: "Oleksii",
-      surname: "Kobalsko",
+      name: "Jim",
+      surname: "Smith",
       dob: new Date("1985","03","03"),
       password: "123456",
       admin: true,
@@ -62,7 +62,7 @@ describe('Users', function(){
       should.not.exist(error);
       should.exist(removedUser);
       removedUser.should.be.an('object');
-      removedUser.name.should.equal('Oleksii');
+      removedUser.name.should.equal('Jim');
       removedUser.password.should.equal('123456');
     });
     User.findOne({id:"001"},function(error,foundUser){

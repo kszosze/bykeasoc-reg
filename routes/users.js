@@ -6,23 +6,34 @@ var User = require('../model/user'); // get our mongoose model
 
 router.route('/')
 .get(function(req,res){
-   res.json(User.all());
+   User.find(function(error,users){
+     res.json(users);
+   });
 })
 .post(parseUrlencoded,function(req,res){
-   res.json(User.create(req.body));
+   User.create(req.body,function(error,newUser){
+     res.json(newUser);
+   });
 });
 
 router.route('/:user_id')
 .get(function(req,res){
-   var userId = parseInt(req.param('user_id'),10);
-   res.json(User.get());
+   var userId = req.params['user_id'];
+   User.findOne({id:userId},function(error,foundUser){
+      res.json(foundUser);
+   });
 })
 .put(parseUrlencoded,function(req,res){
-   res.json(User.update(req.body));
+   var userId = req.params['user_id'];
+   User.findOneAndUpdate({id:userId},req.body,{new:true},function(error,updateUser){
+     res.json(updateUser);
+   });
 })
 .delete(function(req,res){
-   var userId = parseInt(req.param('user_id'),10);
-   res.json(User.delete(userId)|{});
+   var userId = req.params['user_id'];
+   User.findOneAndUpdate({id:userId},{active:false},{new:true},function(error,updateUser){
+     res.json(updateUser);
+   });
 });
 
 module.exports = router;
