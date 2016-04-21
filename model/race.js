@@ -14,6 +14,7 @@ var raceSchema = new Schema({
     distance:String,
     duration:String,
     organiser_id:String,
+    open:Boolean,
     valid:Boolean,
     fees:[{
       id:String,

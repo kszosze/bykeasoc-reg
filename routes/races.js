@@ -6,6 +6,12 @@ var parseUrlencoded = bodyParser.urlencoded({extended:false});
 
 router.route('/')
 .get(function(req,res){
+  var today = new Date();
+  Race.findOneAndUpdate({"end_registration" : {"$lt" : today }}, {"$set" : { open : false }}, { "new": true }, function(error,data){
+    if (error) {
+      console.log(error);
+    };
+  })
   Race.find().exec(function(err,races){
     res.json(races);
   });

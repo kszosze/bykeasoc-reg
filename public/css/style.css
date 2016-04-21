@@ -1,0 +1,9 @@
+.navbar .container {
+    background-color: lightblue;
+}
+
+th {
+    background-color: lightblue;
+    color: white;
+    text-align: center;
+}

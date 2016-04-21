@@ -22,7 +22,7 @@ describe('Race routes', function(){
       duration:"2h",
       organiser_id:"001",
       valid:true,
-      fee:[],
+      fees:[],
       participants:[]
     },
     {
@@ -37,7 +37,7 @@ describe('Race routes', function(){
       duration:"2h",
       organiser_id:"001",
       valid:true,
-      fee:[],
+      fees:[],
       participants:[{
         user_id: "001",
         subscribedOn: "2016/06/24 10:00",
@@ -60,7 +60,7 @@ describe('Race routes', function(){
       duration:"2h",
       organiser_id:"001",
       valid:true,
-      fee:[{
+      fees:[{
         id:"001",
         category:"Senior 40+",
         conditions:"Be really old",

@@ -7,7 +7,8 @@ var mongoose    = require('mongoose');
 
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('./config'); // get our config file
-
+var http = require('http');
+var path = require('path');
 var races = require('./routes/races');
 var users = require('./routes/users');
 var clubs = require('./routes/clubs');
@@ -15,7 +16,7 @@ var bodyParser = require('body-parser');
 var parseUrlencoded = bodyParser.urlencoded({extended:false});
 
 var app = express();
-
+var env = process.env.NODE_ENV || 'development';
 // =======================
 // configuration =========
 // =======================
@@ -31,6 +32,8 @@ app.set('superSecret', config.secret); // secret variable
 // use body parser so we can get info from POST and/or URL parameters
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(express.static(path.join(__dirname, '/public/')));
 
 // use morgan to log requests to the console
 app.use(morgan('dev'));
@@ -53,7 +56,7 @@ app.use(function(req, res, next) {
 
 app.route('/')
 .get(function(req,res){
-
+  res.sendFile('/public/index.html', { root : __dirname});
 });
 
 app.route('/login')
