@@ -1,19 +1,17 @@
-<div class="races-wrapper">
+<div class="races-wrapper" ng-controller="RaceListController">
   <h3>Events coming up</h3>
-  <table class="table table-bordered tabled-striped" ng-controller="RaceListController">
-    <tbody>
-      <tr>
-        <th>Date</th>
-        <th>Title</th>
-        <th>Status</th>
-      </tr>
+  <table database="ng" class="table table-bordered tabled-striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Title</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
       <tr ng-repeat="race in races">
-        <td>
-            {{race.date | date}}
-        </td>
-        <td>
-            <a ng-href="#/race/{{race.id}}">{{race.name}}</a>
-        </td>
+        <td>{{race.date | date}}</td>
+        <td><a ng-href="#/race/{{race.id}}">{{race.name}}</a></td>
         <td> <span ng-if="race.open">Open</span> <span ng-if="!race.open">Close</span> </td>
       </tr>
     </tbody>
