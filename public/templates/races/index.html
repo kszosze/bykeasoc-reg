@@ -1,0 +1,21 @@
+<div class="races-wrapper">
+  <h3>Events coming up</h3>
+  <table class="table table-bordered tabled-striped" ng-controller="RaceListController">
+    <tbody>
+      <tr>
+        <th>Date</th>
+        <th>Title</th>
+        <th>Status</th>
+      </tr>
+      <tr ng-repeat="race in races">
+        <td>
+            {{race.date | date}}
+        </td>
+        <td>
+            <a ng-href="#/race/{{race.id}}">{{race.name}}</a>
+        </td>
+        <td> <span ng-if="race.open">Open</span> <span ng-if="!race.open">Close</span> </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

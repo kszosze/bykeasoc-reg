@@ -12,7 +12,7 @@ router.route('/')
       console.log(error);
     };
   })
-  Race.find().exec(function(err,races){
+  Race.find({},'id date name end_registration',function(err,races){
     res.json(races);
   });
 }).post(parseUrlencoded,function(req,res){
@@ -24,7 +24,7 @@ router.route('/')
 router.route('/:race_id')
 .get(function(req,res){
   var raceId = req.params['race_id'];
-  Race.findOne({id:raceId},function(error,foundRace){
+  Race.findOne({id:raceId},'',function(error,foundRace){
     res.json(foundRace);
   });
 })

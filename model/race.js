@@ -2,7 +2,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// set up a mongoose model and pass it using module.exports
 var raceSchema = new Schema({
     id:String,
     name:String,
@@ -14,10 +13,11 @@ var raceSchema = new Schema({
     distance:String,
     duration:String,
     organiser_id:String,
+    club_id:String,
+    information:String,
     open:Boolean,
     valid:Boolean,
     fees:[{
-      id:String,
       category:String,
       conditions:String,
       pre_register:Boolean,
@@ -25,12 +25,13 @@ var raceSchema = new Schema({
       fee:Number
     }],
     participants: [{
-      user_id: String,
+      name: String,
+      surname: String,
       subscribedOn: Date,
       category: String,
       fee_id:String,
       licence: String,
-      club_id: String,
+      club: String,
       paid: Boolean
     }]
 });

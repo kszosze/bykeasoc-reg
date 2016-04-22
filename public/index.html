@@ -12,6 +12,7 @@
     <meta property="og:locale" content="en_GB">
     <meta property="og:image" content="http://www.RacePass.co.uk/Content/Images/Facebook.png">
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/bs-3.3.6/dt-1.10.11,fh-3.1.1,r-2.0.2,sc-1.4.1/datatables.min.css"/>
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <title>Welcome to RacePass.co.uk</title>
 
@@ -57,30 +58,10 @@
 
 <!--Error handling for events not active yet -->
 
-
+<div ng-view></div>
 <!-- Success messages -->
 
 
-  <h3>Events coming up</h3>
-
-  <p>The following events are open or are opening soon for registration. Click <b><i>Events</i></b> at the top of the page for a list of more. </p>
-  <table class="table table-bordered tabled-striped" ng-controller="raceListController">
-    <tbody><tr>
-        <th>Date</th>
-        <th>Title</th>
-        <th>Status</th>
-    </tr>
-        <tr ng-repeat="race in races">
-            <td>
-                {{race.date | date}}
-            </td>
-            <td>
-                <a ng-href="/races/{{race.id}}">{{race.name}}</a>
-            </td>
-            <td> <span ng-if="race.open">Open</span> <span ng-if="!race.open">Close</span>           </td>
-        </tr>
-      </tbody>
-    </table>
 
     <p class="text-center">
         <a href="http://racepass.co.uk/Event/ListAll">View All Events &gt;&gt;</a>
@@ -94,13 +75,15 @@
     </div>
 
     <script type="text/javascript" src="/js/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/t/bs-3.3.6/dt-1.10.11,fh-3.1.1,r-2.0.2,sc-1.4.1/datatables.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/angular.min.js"></script>
+    <script type="text/javascript" src="/js/angular-route.min.js"></script>
     <script type="text/javascript" src="/js/bykeBookingApp.js"></script>
+    <script type="text/javascript" src="/js/routes.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#JavaScriptWarning').remove();
-            CheckCookies();
         });
     </script>
     <script type="text/javascript">(function () {
