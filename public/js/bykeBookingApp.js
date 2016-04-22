@@ -21,4 +21,20 @@ angular.module('bykeBookingApp', ['ngRoute','datatables'])
           $scope.organiser = data.name+" "+data.surname;
         })
       });
-  }]);
+  }])
+  .directive("participantsTable",function($http){
+    return {
+      restrict: 'E',
+      templateUrl: '/templates/race/participants.html',
+      scope : {
+        race:'@',
+        category:'@'
+      },
+      controller : function($scope){
+        console.log($scope.race);
+        $http.get('/races/'+race+'/participants/category/'+$scope.category).success(function(data){
+          $scope.participants = data;
+        })
+      }
+    };
+  });

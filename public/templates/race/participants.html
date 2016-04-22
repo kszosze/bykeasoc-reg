@@ -1,0 +1,18 @@
+<table datatable="ng" class="table table-bordered table-striped" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th> Name </th>
+      <th> Surname </th>
+      <th> Club </th>
+      <th> Race Category </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="participant in race.participants">
+      <td> {{participant.name}} </td>
+      <td> {{participant.surname}} </td>
+      <td> {{participant.club}} </td>
+      <td> {{participant.category}} </td>
+    </tr>
+  </tbody>
+</table>

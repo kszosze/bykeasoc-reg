@@ -86,4 +86,12 @@ router.route('/:race_id/participants/:participant_id')
   });
 });
 
+router.route('/:race_id/participants/category/:category_id')
+.get(function(req,res){
+  var raceId = req.params['race_id'];
+  var categoryId = req.params['category_id'];
+  console.log(Race.find({id:raceId}).populate({path:'participants',match:{category:categoryId},select:'name surname category'}).exec());
+  res.json(Race.find({id:raceId}).populate({path:'participants',match:{category:categoryId},select:'name surname category'}).exec());
+});
+
 module.exports = router;
