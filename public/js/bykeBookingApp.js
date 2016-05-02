@@ -26,14 +26,14 @@ angular.module('bykeBookingApp', ['ngRoute','datatables'])
     return {
       restrict: 'E',
       templateUrl: '/templates/race/participants.html',
-      scope : {
-        race:'@',
-        category:'@'
-      },
-      controller : function($scope){
-        console.log($scope.race);
-        $http.get('/races/'+race+'/participants/category/'+$scope.category).success(function(data){
-          $scope.participants = data;
+      link : function(scope, element, attrs){
+        var category = attrs.category;
+        var raceId = attrs.raceid;
+        console.log(attrs);
+        console.log(raceId);
+        console.log(category);
+        $http.get('/races/'+attrs.race+'/participants/category/'+category).success(function(data){
+          return data;
         })
       }
     };
