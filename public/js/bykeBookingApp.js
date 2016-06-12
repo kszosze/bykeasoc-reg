@@ -26,23 +26,28 @@ angular.module('bykeBookingApp', ['ngRoute','datatables'])
     return {
       restrict: 'E',
       templateUrl: '/templates/race/participants.html',
-      link : function(scope, element, attrs){
+      scope :{
+        raceid : '@',
+        category : '@'
+      }
+    /*  ,link : function(scope, element, attrs){
         var category = attrs.category;
         var raceId = attrs.raceid;
         console.log(attrs);
         console.log(raceId);
         console.log(category);
-        $http.get('/races/'+attrs.race+'/participants/category/'+category).success(function(data){
+        $http.get('/races/'+raceId+'/participants/category/'+category).success(function(data){
           return data;
         })
-      }
+      }*/
     };
-  }).controller("ParticipantsTableController",  function ($scope, DTOptionsBuilder, DTColumnBuilder) {
+  })
+  .controller("ParticipantsTableController",  function ($scope, DTOptionsBuilder, DTColumnBuilder) {
     var vm = this;
     var raceId = $scope.raceid;
-    var licenceType = $scope.category;
+    var category = $scope.category;
     vm.dtInstance = {};
-    vm.dtOptions = DTOptionsBuilder.fromSource('/'+raceId+'/participants/licence/'+licenceType)
+    vm.dtOptions = DTOptionsBuilder.fromSource('/races/'+raceId+'/participants/category/'+category)
         .withPaginationType('full_numbers');
     vm.dtColumns = [
         DTColumnBuilder.newColumn('name').withTitle('First name'),
@@ -52,4 +57,4 @@ angular.module('bykeBookingApp', ['ngRoute','datatables'])
         DTColumnBuilder.newColumn('club').withTitle('Club'),
         DTColumnBuilder.newColumn('paid').withTitle('Has paid?')
     ];
-  });S
+  });

@@ -72,10 +72,11 @@ router.route('/:race_id/participants')
   });
 });
 
-router.route('/:race_id/participants/licence/:licenceType')
+router.route('/:race_id/participants/licence/:category')
 .get(function(req,res){
   var raceId = req.params['race_id'];
-  Race.findOne({id:raceId},{"$push":{"participants":{licence:licenceType}}},{new:true},function(error,updateRace){
+  var category = req.params['category'];
+  Race.findOne({id:raceId},{"$push":{"participants":{licence:category}}},{new:true},function(error,updateRace){
     res.json(updateRace);
   });
 });
@@ -104,8 +105,16 @@ router.route('/:race_id/participants/category/:category_id')
 .get(function(req,res){
   var raceId = req.params['race_id'];
   var categoryId = req.params['category_id'];
-  console.log(Race.find({id:raceId}).populate({path:'participants',match:{category:categoryId},select:'name surname category'}).exec());
-  res.json(Race.find({id:raceId}).populate({path:'participants',match:{category:categoryId},select:'name surname category'}).exec());
+  Race.findOne({id:raceId},function(error,result){
+    competitors = [];
+    for (var runner in result.participants){
+      if (result.participants[runner].category == categoryId)
+      {
+        competitors.push(result.participants[runner]);
+      }
+    }
+    res.json(competitors);
+  });
 });
 
 module.exports = router;
