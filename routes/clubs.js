@@ -6,12 +6,22 @@ var Club = require('../model/club'); // get our mongoose model
 
 router.route('/')
 .get(function(req,res){
-  Club.find().exec(function(err,clubs){
-    res.json(clubs);
+  Club.find().exec(function(error,clubs){
+    if (error) {
+      console.log(error);
+    }
+    else {
+      res.json(clubs);
+    }
   });
 }).post(parseUrlencoded,function(req,res){
   Club.create(req.body,function(error,newClub){
-    res.json(newClub);
+    if (error) {
+      console.log(error);
+    }
+    else {
+      res.json(newClub);
+    }
   });
 });
 
@@ -20,7 +30,7 @@ router.route('/:club_id')
   var clubId = req.params['club_id'];
   Club.findOne({id:clubId},function(error,foundClub){
     if (error) {
-      console.log('got an error');
+      console.log(error);
     }
     res.json(foundClub);
   });
@@ -36,7 +46,12 @@ router.route('/:club_id')
 .delete(function(req,res){
   var clubId = req.params['club_id'];
   Club.findOneAndUpdate({id:clubId},{active:false},{new:true},function(error,removedClub){
-    res.json(removedClub);
+    if (error) {
+      console.log(error);
+    }
+    else {
+      res.json(removedClub);
+    }
   });
 });
 

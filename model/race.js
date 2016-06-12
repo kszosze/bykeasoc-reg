@@ -23,16 +23,6 @@ var raceSchema = new Schema({
       pre_register:Boolean,
       pre_paid:Boolean,
       fee:Number
-    }],
-    participants: [{
-      name: String,
-      surname: String,
-      subscribedOn: Date,
-      category: String,
-      fee_id:String,
-      licence: String,
-      club: String,
-      paid: Boolean
     }]
 });
 try{
