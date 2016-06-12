@@ -143,6 +143,17 @@ router.route('/:race_id/participants/:participant_id')
       res.json(removedParticipant);
     }
   });
+}).put(parseUrlencoded, function(req,res){
+  var raceId = req.params['race_id'];
+  var participantId = req.params['participant_id'];
+  Participant.findOneAndUpdate({participantId:raceId, race_id: raceId},req.body,{new:true},function(error,updateRace){
+    if (error) {
+      console.log(error);
+    }
+    else {
+      res.json(updateRace);
+    }
+  });
 })
 
 module.exports = router;

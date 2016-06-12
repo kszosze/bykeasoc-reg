@@ -211,13 +211,16 @@ describe('Race routes', function(){
 
       it('Add participant in a race', function(done){
         var participant ={
-          user_id: "001",
+          name: "John",
+          surname: "Smith",
           subscribedOn: "2016/06/24 10:00",
           category: "Senior 40+",
           fee_id: "001",
           licence: "Full",
           club_id: "001",
-          paid: true
+          race_id: "003",
+          paid: true,
+          vaid : true
         };
         request
         .post('/races/003/participants')
@@ -228,22 +231,23 @@ describe('Race routes', function(){
             // HTTP status should be 200
             res.status.should.equal(200);
             var object = res.body;
-            expect(object.id).to.equal("003");
+            expect(object.name).to.equal("John");
             expect(object.valid).to.equal(true);
-            expect(object.participants.length).to.equal(1);
             done();
           });
       });
 
       it('Update participant in a race', function(done){
         var participant ={
-          user_id: "001",
+          name: "John",
+          surname: "Smith",
           subscribedOn: "2016/06/24 10:00",
           category: "Senior 40+",
           fee_id: "002",
           licence: "Full",
           club_id: "002",
-          paid: false
+          paid: false,
+          valid: true
         };
         request
         .put('/races/002/participants/001')
@@ -254,10 +258,8 @@ describe('Race routes', function(){
             // HTTP status should be 200
             res.status.should.equal(200);
             var object = res.body;
-            expect(object.id).to.equal("002");
+            expect(object.name).to.equal("John");
             expect(object.valid).to.equal(true);
-            expect(object.participants.length).to.equal(1);
-            expect(object.participants[0].fee_id).to.equal("002");
             done();
           });
       });

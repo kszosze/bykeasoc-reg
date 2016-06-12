@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var participantSchema = new Schema({
+  id:String,
   name: String,
   surname: String,
   race_id : String,
