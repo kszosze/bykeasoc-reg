@@ -59,9 +59,23 @@ router.route('/:race_id/fees/:fee_id')
 });
 
 router.route('/:race_id/participants')
+.get(function(req,res){
+  var raceId = req.params['race_id'];
+  Race.findOne({id:raceId},'',function(error,foundRace){
+    res.json(foundRace.participants);
+  });
+})
 .post(parseUrlencoded,function(req,res){
   var raceId = req.params['race_id'];
-  Race.findOneAndUpdate({id:raceId},{"$push":{"participants":req.body}},{new:true},function(error,updateRace){
+  Race.findOneAndUpdate({id:raceId},{"$pull":{"participants":req.body}},{new:true},function(error,updateRace){
+    res.json(updateRace);
+  });
+});
+
+router.route('/:race_id/participants/licence/:licenceType')
+.get(function(req,res){
+  var raceId = req.params['race_id'];
+  Race.findOne({id:raceId},{"$push":{"participants":{licence:licenceType}}},{new:true},function(error,updateRace){
     res.json(updateRace);
   });
 });

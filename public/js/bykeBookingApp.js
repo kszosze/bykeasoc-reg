@@ -37,4 +37,19 @@ angular.module('bykeBookingApp', ['ngRoute','datatables'])
         })
       }
     };
-  });
+  }).controller("ParticipantsTableController",  function ($scope, DTOptionsBuilder, DTColumnBuilder) {
+    var vm = this;
+    var raceId = $scope.raceid;
+    var licenceType = $scope.category;
+    vm.dtInstance = {};
+    vm.dtOptions = DTOptionsBuilder.fromSource('/'+raceId+'/participants/licence/'+licenceType)
+        .withPaginationType('full_numbers');
+    vm.dtColumns = [
+        DTColumnBuilder.newColumn('name').withTitle('First name'),
+        DTColumnBuilder.newColumn('surname').withTitle('Last name'),
+        DTColumnBuilder.newColumn('category').withTitle('Category'),
+        DTColumnBuilder.newColumn('subscribedOn').withTitle('Subscribe On'),
+        DTColumnBuilder.newColumn('club').withTitle('Club'),
+        DTColumnBuilder.newColumn('paid').withTitle('Has paid?')
+    ];
+  });S
