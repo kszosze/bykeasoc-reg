@@ -154,7 +154,7 @@ describe('Races', function(){
   });
 
   it ('Can remove a participant from a race', function(done){
-    Participant.findOne({id:"001"},{"$pull":{"participants.user_id":"001"}},function(error,foundRace){
+    Participant.findOneAndRemove({id:"001"},'',function(error,foundRace){
       should.not.exist(error);
       should.exist(foundRace);
       should.exist(foundRace.participants);
