@@ -7,6 +7,8 @@ var app = require('../app.js');
 var request = require('supertest').agent(app.listen());
 var utils = require('./utils');
 var Race = require('../model/race');
+var Participant = require('../model/participant');
+
 describe('Race routes', function(){
 
   beforeEach(function(done){
@@ -22,8 +24,7 @@ describe('Race routes', function(){
       duration:"2h",
       organiser_id:"001",
       valid:true,
-      fees:[],
-      participants:[]
+      fees:[]
     },
     {
       id:"002",
@@ -37,16 +38,7 @@ describe('Race routes', function(){
       duration:"2h",
       organiser_id:"001",
       valid:true,
-      fees:[],
-      participants:[{
-        user_id: "001",
-        subscribedOn: "2016/06/24 10:00",
-        category: "Senior 40+",
-        fee_id: "001",
-        licence: "Full",
-        club_id: "001",
-        paid: true
-      }]
+      fees:[]
     },
     {
       id:"003",
@@ -67,10 +59,37 @@ describe('Race routes', function(){
         pre_register:true,
         pre_paid:true,
         fee:20
-      }],
-      participants:[]
+      }]
     }];
     Race.create(races,function(error){
+      assert.ifError(error);
+    });
+    var participants = [{
+      id:"001",
+      name: "John",
+      surname: "Smith",
+      subscribedOn: "2016/06/24 10:00",
+      category: "Senior 40+",
+      fee_id: "002",
+      licence: "Full",
+      club_id: "002",
+      race_id: "001",
+      paid: false,
+      valid: true
+    },{
+      id:"002",
+      name: "John",
+      surname: "Smith",
+      subscribedOn: "2016/06/24 10:00",
+      category: "Senior 40+",
+      fee_id: "001",
+      licence: "Full",
+      club_id: "003",
+      race_id: "003",
+      paid: false,
+      valid: true
+    }];
+    Participant.create(participants,function(error){
       assert.ifError(error);
     });
     done();
@@ -211,6 +230,7 @@ describe('Race routes', function(){
 
       it('Add participant in a race', function(done){
         var participant ={
+          id:"001",
           name: "John",
           surname: "Smith",
           subscribedOn: "2016/06/24 10:00",
@@ -220,7 +240,7 @@ describe('Race routes', function(){
           club_id: "001",
           race_id: "003",
           paid: true,
-          vaid : true
+          valid : true
         };
         request
         .post('/races/003/participants')
@@ -232,13 +252,14 @@ describe('Race routes', function(){
             res.status.should.equal(200);
             var object = res.body;
             expect(object.name).to.equal("John");
-            expect(object.valid).to.equal(true);
+            expect(object.paid).to.equal(true);
             done();
           });
       });
 
       it('Update participant in a race', function(done){
         var participant ={
+          id:"001",
           name: "John",
           surname: "Smith",
           subscribedOn: "2016/06/24 10:00",
@@ -246,11 +267,12 @@ describe('Race routes', function(){
           fee_id: "002",
           licence: "Full",
           club_id: "002",
+          race_id: "001",
           paid: false,
           valid: true
         };
         request
-        .put('/races/002/participants/001')
+        .put('/races/003/participants/002')
         .send(participant)
         .expect('Content-type','application/json; charset=utf-8')
         .expect(200) // THis is HTTP response
@@ -259,7 +281,7 @@ describe('Race routes', function(){
             res.status.should.equal(200);
             var object = res.body;
             expect(object.name).to.equal("John");
-            expect(object.valid).to.equal(true);
+            expect(object.paid).to.equal(false);
             done();
           });
       });

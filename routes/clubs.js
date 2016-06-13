@@ -10,9 +10,7 @@ router.route('/')
     if (error) {
       console.log(error);
     }
-    else {
-      res.json(clubs);
-    }
+    res.json(clubs);
   });
 }).post(parseUrlencoded,function(req,res){
   Club.create(req.body,function(error,newClub){

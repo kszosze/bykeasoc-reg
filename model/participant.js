@@ -11,7 +11,8 @@ var participantSchema = new Schema({
   fee_id:String,
   licence: String,
   club_id: String,
-  paid: Boolean
+  paid: Boolean,
+  valid: Boolean
 })
 try{
   mongoose.model('Participant',participantSchema);

@@ -17,9 +17,7 @@ router.route('/')
     if (error) {
       console.log(error);
     }
-    else {
-      res.json(races);
-    }
+    res.json(races);
   });
 }).post(parseUrlencoded,function(req,res){
   Race.create(req.body,function(error,newRace){
@@ -111,9 +109,7 @@ router.route('/:race_id/participants')
     if (error) {
       console.log(error);
     }
-    else {
-      res.json(newParticipant);
-    }
+    res.json(newParticipant);
   });
 });
 
@@ -139,20 +135,16 @@ router.route('/:race_id/participants/:participant_id')
     if (error) {
       console.log(error);
     }
-    else {
-      res.json(removedParticipant);
-    }
+    res.json(removedParticipant);
   });
 }).put(parseUrlencoded, function(req,res){
   var raceId = req.params['race_id'];
   var participantId = req.params['participant_id'];
-  Participant.findOneAndUpdate({participantId:raceId, race_id: raceId},req.body,{new:true},function(error,updateRace){
+  Participant.findOneAndUpdate({id:participantId, race_id: raceId},req.body,{new:true},function(error,updateParticipant){
     if (error) {
       console.log(error);
     }
-    else {
-      res.json(updateRace);
-    }
+    res.json(updateParticipant);
   });
 })
 
