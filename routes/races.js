@@ -29,7 +29,6 @@ router.route('/')
     }
   });
 });
-
 router.route('/:race_id')
 .get(function(req,res){
   var raceId = req.params['race_id'];

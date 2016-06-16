@@ -7,6 +7,11 @@ angular.module('bykeBookingApp')
     controller:'RaceListController',
     controllerAs:'raceListController'
   })
+  .when('/race/new',{
+    templateUrl:'/templates/race/new.html',
+    controller:'RaceListController',
+    controllerAs:'raceListController'
+  })
   .when('/race/:id', {
     templateUrl: '/templates/race/index.html',
     controller: 'RaceController',

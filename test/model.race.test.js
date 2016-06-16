@@ -157,8 +157,6 @@ describe('Races', function(){
     Participant.findOneAndRemove({id:"001"},'',function(error,foundRace){
       should.not.exist(error);
       should.exist(foundRace);
-      should.exist(foundRace.participants);
-      expect(foundRace.participants.lenght).to.be(0);
     });
     done();
   });
