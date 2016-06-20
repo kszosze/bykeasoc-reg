@@ -2,7 +2,7 @@
 angular.module('bykeBookingApp')
 .config(function($routeProvider){
   $routeProvider
-  .when('/races',{
+  .when('/events',{
     templateUrl:'/templates/races/index.html',
     controller:'RaceListController',
     controllerAs:'raceListController'

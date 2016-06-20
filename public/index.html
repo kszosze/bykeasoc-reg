@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="RacePass provides online registration and payment services for sporting events.">
-    <meta name="author" content="Adrian Finnegan">
+    <meta name="author" content="">
     <meta name="keywords" content="RacePass,PayPal,UXC,NPS,Cross Country,Race Portal">
     <meta property="og:title" content="RacePass event registration.">
     <meta property="og:description" content="RacePass provides online registration and payment services for sporting events. Host your event in seconds with one single flat payment.">
@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/bs-3.3.6/dt-1.10.11,fh-3.1.1,r-2.0.2,sc-1.4.1/datatables.min.css"/>
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/js/css/angular-datatables.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+
     <title>Welcome to RacePass.co.uk</title>
 
 <body>
@@ -34,7 +36,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
                         <li><a href="/">Home</a></li>
-                        <li><a href="/races">Events</a></li>
+                        <li><a href="#/events">Events</a></li>
                         <li><a href="/Help">Help</a></li>
                         <li><a href="/Contact">Contact</a></li>
                         <li><a href="/Login">Login</a></li>
@@ -76,6 +78,8 @@
         </div>
     </div>
 
+
+
     <script type="text/javascript" src="/js/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/t/bs-3.3.6/dt-1.10.11,fh-3.1.1,r-2.0.2,sc-1.4.1/datatables.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
@@ -84,10 +88,25 @@
     <script type="text/javascript" src="/js/angular-datatables.min.js"></script>
     <script type="text/javascript" src="/js/bykeBookingApp.js"></script>
     <script type="text/javascript" src="/js/routes.js"></script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.en-EN.js">
+    </script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#JavaScriptWarning').remove();
+            $('#datetimepicker1').datetimepicker({
+              format: 'dd/MM/yyyy hh:mm:ss',
+              language: 'en-EN'
+            });
+            $('#datetimepicker2').datetimepicker({
+              format: 'dd/MM/yyyy hh:mm:ss',
+              language: 'en-EN'
+            });
         });
+
     </script>
     <script type="text/javascript">(function () {
         return window.SIG_EXT = {};

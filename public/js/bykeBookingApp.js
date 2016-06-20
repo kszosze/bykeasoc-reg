@@ -30,16 +30,6 @@ angular.module('bykeBookingApp', ['ngRoute','datatables'])
         raceid : '@',
         category : '@'
       }
-    /*  ,link : function(scope, element, attrs){
-        var category = attrs.category;
-        var raceId = attrs.raceid;
-        console.log(attrs);
-        console.log(raceId);
-        console.log(category);
-        $http.get('/races/'+raceId+'/participants/category/'+category).success(function(data){
-          return data;
-        })
-      }*/
     };
   })
   .controller("ParticipantsTableController",  function ($scope, DTOptionsBuilder, DTColumnBuilder) {
@@ -57,4 +47,10 @@ angular.module('bykeBookingApp', ['ngRoute','datatables'])
         DTColumnBuilder.newColumn('club').withTitle('Club'),
         DTColumnBuilder.newColumn('paid').withTitle('Has paid?')
     ];
+  })
+  .controller("RaceReviewController", function($scope){
+    this.race= {};
+    this.addReview=function(race) {
+
+    };
   });
