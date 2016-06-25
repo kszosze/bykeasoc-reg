@@ -27,29 +27,24 @@
                         <input class="form-control" name="startPoint" ng-model="raceReviewCtrl.race.startPoint" type="text" />
                       </div>
                       <div class="input-group">
-
-                        <div id="datetimepicker1" class="input-append date">
-                          <label class="input-group-addon">Open Registration :</label>
-                          <input class="form-control ng-dirty" data-format="dd/MM/yyyy hh:mm:ss"
-                          name="start_registration" ng-model="raceReviewCtrl.race.start_registration"
-                          required type="text"></input>
-                          <span class="add-on">
-                            <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                            </i>
-                          </span>
+                          <label class="input-group-addon" for="start_registration">Open Registration :</label>
+                          <div class="dropdown">
+                              <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href=""  aria-haspopup="true" aria-expanded="true">
+                                  Click here to show calendar
+                              </a>
+                              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <datetimepicker name="start_registration" class="form-control ng-dirty"  data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle' }" data-ng-model="raceReviewCtrl.race.start_registration" required></datetimepicker>
+                              </ul>
+                          </div>
+                        <label class="input-group-addon" for="end_registration">Close Registration :</label>
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" id="bLabel" role="button" data-toggle="dropdown" data-target="#" href="">
+                                Click here to show calendar
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="bLabel">
+                              <datetimepicker name="end_registration"class="form-control ng-dirty"  data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle' }" data-ng-model="raceReviewCtrl.race.end_registration" required></datetimepicker>
+                            </ul>
                         </div>
-
-                        <div id="datetimepicker2" class="input-append date">
-                          <label class="input-group-addon">Close Registration :</label>
-                          <input class="form-control ng-dirty" data-format="dd/MM/yyyy hh:mm:ss"
-                          name="start_registration" ng-model="raceReviewCtrl.race.end_registration"
-                          required type="text"></input>
-                          <span class="add-on">
-                            <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                            </i>
-                          </span>
-                        </div>
-
                       </div>
                       <div class="input-group">
                         <label class="input-group-addon">Organiser :</label>

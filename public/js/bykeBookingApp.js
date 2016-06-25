@@ -1,5 +1,5 @@
 'use strict';
-angular.module('bykeBookingApp', ['ngRoute','datatables'])
+angular.module('bykeBookingApp', ['ngRoute','datatables','ui.bootstrap.datetimepicker'])
   .controller("RaceListController",['$scope','$http',function($scope, $http) {
     $scope.races = [];
     $http.get('/races')
