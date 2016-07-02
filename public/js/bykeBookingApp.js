@@ -143,7 +143,6 @@ angular.module('bykeBookingApp', ['ngRoute','datatables','ui.bootstrap'])
        return response.data;
      });
    };
-   
    $scope.ngModelOptionsSelected = function(value) {
      if (arguments.length) {
        _selected = value;
