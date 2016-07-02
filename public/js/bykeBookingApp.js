@@ -48,7 +48,7 @@ angular.module('bykeBookingApp', ['ngRoute','datatables','ui.bootstrap'])
         DTColumnBuilder.newColumn('paid').withTitle('Has paid?')
     ];
   })
-  .controller("RaceReviewController", function($scope){
+  .controller("RaceReviewController", function($scope,$http){
 
     $scope.today = function() {
       $scope.dt = new Date();
@@ -117,6 +117,9 @@ angular.module('bykeBookingApp', ['ngRoute','datatables','ui.bootstrap'])
     }
   ];
 
+  var _selected;
+
+  $scope.selected = undefined;
   function getDayClass(data) {
     var date = data.date,
       mode = data.mode;
@@ -134,6 +137,29 @@ angular.module('bykeBookingApp', ['ngRoute','datatables','ui.bootstrap'])
 
     return '';
   }
+  $scope.getClubs = function(val) {
+    if (val == null) val=''
+     return $http.get('/clubs/search/'+val).then(function(response){
+       return response.data;
+     });
+   };
+   
+   $scope.ngModelOptionsSelected = function(value) {
+     if (arguments.length) {
+       _selected = value;
+     } else {
+       return _selected;
+     }
+   };
+
+   $scope.modelOptions = {
+     debounce: {
+       default: 500,
+       blur: 250
+     },
+     getterSetter: true
+   };
+
   this.race= {};
   this.addReview=function(race) {
 

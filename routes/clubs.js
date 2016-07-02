@@ -53,4 +53,25 @@ router.route('/:club_id')
   });
 });
 
+router.route('/search/:club_name')
+.get(function(req,res){
+  var clubName = req.params['club_name'];
+  if (clubName != '')
+  {
+  Club.find({name: { "$regex": clubName, "$options": "i" }},function(error,foundClub){
+    if (error) {
+      console.log(error);
+    }
+    res.json(foundClub);
+  });
+}else{
+  Club.find().exec(function(error,foundClub){
+    if (error){
+      console.log(error)
+    }
+    res.json(foundClub);
+  })
+}
+});
+
 module.exports = router;

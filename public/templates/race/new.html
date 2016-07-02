@@ -42,7 +42,14 @@
                       </div>
                       <div class="input-group">
                         <label class="input-group-addon">Organiser :</label>
-                        <input class="form-control ng-dirty" name="organiser" ng-model="raceReviewCtrl.race.organiser" type="text" required/>
+                        <input type="text" name="organiser" ng-model="raceReviewCtrl.race.organiser"
+                         placeholder="Organiser Club"
+                         uib-typeahead="club as club.name for club in getClubs($viewValue)"
+                         class="form-control ng-dirty ng-binding"
+                         required typeahead-show-hint="true"
+                         typeahead-min-length="0"
+                         typeahead-loading="loadingLocations" value="$viewValue">
+                        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
                       </div>
                       <input type="submit" value="Submit" />
                     </form>
@@ -52,4 +59,5 @@
           </div>
         </div>
   </div>
+
 </div>
