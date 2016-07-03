@@ -4,7 +4,7 @@
   "description": "Register app for byke asoc",
   "main": "app.js",
   "scripts": {
-    "test": "mocha -w"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
