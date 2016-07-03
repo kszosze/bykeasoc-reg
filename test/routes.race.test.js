@@ -111,7 +111,6 @@ describe('Race routes', function(){
 
     it('create a race',function(done){
       var race = {
-          "id":"004",
           "name":"The hard race ever",
           "date":"2016/07/21 10:00",
           "start_registration":"2016/05/05 09:00",
@@ -133,7 +132,7 @@ describe('Race routes', function(){
           // HTTP status should be 200
           res.status.should.equal(200);
           var object = res.body;
-          expect(object.id).to.equal("004");
+          expect(object.id).to.equal("003");
           done();
         });
       });
