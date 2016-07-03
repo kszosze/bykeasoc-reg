@@ -50,7 +50,7 @@ angular.module('bykeBookingApp', ['ngRoute','datatables','ui.bootstrap'])
   })
   .controller("RaceReviewController", function($scope,$http){
 
-    $scope.today = function() {
+  $scope.today = function() {
       $scope.dt = new Date();
     };
   $scope.today();
@@ -82,6 +82,10 @@ angular.module('bykeBookingApp', ['ngRoute','datatables','ui.bootstrap'])
     $scope.popup1.opened = true;
   };
 
+  $scope.open3 = function() {
+    $scope.popup3.opened = true;
+  };
+
   $scope.open2 = function() {
     $scope.popup2.opened = true;
   };
@@ -99,6 +103,10 @@ angular.module('bykeBookingApp', ['ngRoute','datatables','ui.bootstrap'])
   };
 
   $scope.popup2 = {
+    opened: false
+  };
+
+  $scope.popup3 = {
     opened: false
   };
 
@@ -136,16 +144,18 @@ angular.module('bykeBookingApp', ['ngRoute','datatables','ui.bootstrap'])
     }
 
     return '';
-  }
+  };
+
   $scope.getClubs = function(val) {
     if (val == null) val=''
      return $http.get('/clubs/search/'+val).then(function(response){
        return response.data;
      });
    };
+
    $scope.ngModelOptionsSelected = function(value) {
      if (arguments.length) {
-       _selected = value;
+       _selected = value.id;
      } else {
        return _selected;
      }
@@ -161,6 +171,12 @@ angular.module('bykeBookingApp', ['ngRoute','datatables','ui.bootstrap'])
 
   this.race= {};
   this.addReview=function(race) {
-
+    $http.post('/races/',race,function(error,newRace){
+      if (error){
+        console.log(error)
+      }else{
+          console.log(newRace)
+      }
+    });
   };
 });

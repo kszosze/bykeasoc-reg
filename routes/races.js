@@ -20,13 +20,18 @@ router.route('/')
     res.json(races);
   });
 }).post(parseUrlencoded,function(req,res){
-  Race.create(req.body,function(error,newRace){
-    if (error) {
-      console.log(error);
-    }
-    else {
-      res.json(newRace);
-    }
+
+  var newRace = req.body;
+  Race.count({},function(error,count){
+    newRace["id"] =("00"+count).slice(-3);
+    Race.create(newRace,function(error,newRace){
+      if (error) {
+        console.log(error);
+      }
+      else {
+        res.json(newRace);
+      }
+    });
   });
 });
 router.route('/:race_id')

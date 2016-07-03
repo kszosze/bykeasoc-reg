@@ -7,8 +7,8 @@
               <div class="row">
                   <div class="col-md-12">
                     <form name="reviewForm" ng-controller="RaceReviewController as raceReviewCtrl"
-                            ng-submit="reviewForm.$valid && raceReviewCtrl.addReview(race)">
-                      <div class="input-group">
+                            ng-submit="reviewForm.$valid && raceReviewCtrl.addReview(raceReviewCtrl.race)">
+                      <div class="input-group col-md-6">
                         <label class="input-group-addon">Name :</label>
                         <input class="form-control ng-dirty" name="name" ng-model="raceReviewCtrl.race.name" type="text" required/>
                       </div>
@@ -20,13 +20,16 @@
                         <input class="form-control ng-dirty" name="duration" ng-model="raceReviewCtrl.race.duration" type="number" required/>
 
                       </div>
-                      <div class="input-group">
+                      <div class="input-group col-md-6">
                         <label class="input-group-addon">Place :</label>
                         <input class="form-control ng-dirty" name="place" ng-model="raceReviewCtrl.race.place" type="text" required/>
                       </div>
-                      <div class="input-group">
-                        <label class="input-group-addon">Start Point :</label>
-                        <input class="form-control" name="startPoint" ng-model="raceReviewCtrl.race.startPoint" type="text" />
+                      <div class="input-group col-md-6">
+                        <label class="input-group-addon" for="date">Date :</label>
+                        <input name="date" class="form-control ng-dirty"  uib-datepicker-popup="{{format}}" data-ng-model="raceReviewCtrl.race.date"  is-open="popup3.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"/>
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="open3()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
                       </div>
                       <div class="input-group">
                         <label class="input-group-addon" for="start_registration">Open Registration :</label>
@@ -40,16 +43,16 @@
                           <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
                         </span>
                       </div>
-                      <div class="input-group">
+                      <div class="input-group col-md-6">
                         <label class="input-group-addon">Organiser :</label>
                         <input type="text" name="organiser" ng-model="raceReviewCtrl.race.organiser"
                          placeholder="Organiser Club"
                          uib-typeahead="club as club.name for club in getClubs($viewValue)"
-                         class="form-control ng-dirty ng-binding"
-                         required typeahead-show-hint="true"
-                         typeahead-min-length="0"
-                         typeahead-loading="loadingLocations" value="$viewValue">
-                        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                         class="form-control ng-dirty"
+                         required
+                         typeahead-min-length="3"
+                         typeahead-loading="loadingLocations">
+                        <i ng-show="loadingLocations" class="input-group-addon glyphicon glyphicon-refresh"></i>
                       </div>
                       <input type="submit" value="Submit" />
                     </form>
