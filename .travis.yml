@@ -1,4 +1,8 @@
 language: "node_js"
+services:
+  - mongodb
+before_script:
+  - mongorestore -u travis -p test
 node_js:
   - "6"
   - "6.1"
