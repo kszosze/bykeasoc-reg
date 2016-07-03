@@ -3,7 +3,7 @@ sudo: required
 services:
   - mongodb
 before_script:
-  - mongorestore -u travis -p test
+  - mongorestore
 node_js:
   - "6"
   - "6.1"
