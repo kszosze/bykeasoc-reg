@@ -61,4 +61,25 @@ router.route('/:user_id')
    });
 });
 
+router.route('/search/:user_name')
+.get(function(req,res){
+  var userName = req.params['user_name'];
+  if (userName != '')
+  {
+  User.find({name: { "$regex": userName, "$options": "i" }},function(error,foundUser){
+    if (error) {
+      console.log(error);
+    }
+    res.json(foundUser);
+  });
+}else{
+  User.find().exec(function(error,foundUser){
+    if (error){
+      console.log(error)
+    }
+    res.json(foundUser);
+  })
+}
+});
+
 module.exports = router;
