@@ -15,6 +15,7 @@ angular.module('bykeBookingApp', ['ngRoute', 'datatables', 'ui.bootstrap'])
       $scope.race = {};
       $scope.organizer = {};
       $scope.club = {};
+      $scope.categories = ['Senior 1 Male','Senior 2 Male']
       $http.get('/races/'+$routeParams.id).success(function(data){
         $scope.race = data;
         $http.get('/users/'+data.organiser_id).success(function(data){
@@ -27,26 +28,27 @@ angular.module('bykeBookingApp', ['ngRoute', 'datatables', 'ui.bootstrap'])
       restrict: 'E',
       templateUrl: '/templates/race/participants.html',
       scope :{
-        raceid : '@',
-        category : '@'
-      }
+        raceid:'@',
+        category:'@'
+      },
+      controllerAs: 'participantsTable',
+      controller: function ($scope, DTOptionsBuilder, DTColumnBuilder) {
+          var vm = this;
+          var raceId = $scope.raceid;
+          var category = $scope.category;
+          vm.dtInstance = {};
+          vm.dtOptions = DTOptionsBuilder.fromSource('/races/'+raceId+'/participants/category/'+category)
+              .withPaginationType('full_numbers');
+          vm.dtColumns = [
+              DTColumnBuilder.newColumn('name').withTitle('First name'),
+              DTColumnBuilder.newColumn('surname').withTitle('Last name'),
+              DTColumnBuilder.newColumn('category').withTitle('Category'),
+              DTColumnBuilder.newColumn('subscribedOn').withTitle('Subscribe On'),
+              DTColumnBuilder.newColumn('club').withTitle('Club'),
+              DTColumnBuilder.newColumn('paid').withTitle('Has paid?')
+          ];
+        }
     };
-  })
-  .controller("ParticipantsTableController", function ($scope, DTOptionsBuilder, DTColumnBuilder) {
-    var vm = this;
-    var raceId = $scope.raceid;
-    var category = $scope.category;
-    vm.dtInstance = {};
-    vm.dtOptions = DTOptionsBuilder.fromSource('/races/'+raceId+'/participants/category/'+category)
-        .withPaginationType('full_numbers');
-    vm.dtColumns = [
-        DTColumnBuilder.newColumn('name').withTitle('First name'),
-        DTColumnBuilder.newColumn('surname').withTitle('Last name'),
-        DTColumnBuilder.newColumn('category').withTitle('Category'),
-        DTColumnBuilder.newColumn('subscribedOn').withTitle('Subscribe On'),
-        DTColumnBuilder.newColumn('club').withTitle('Club'),
-        DTColumnBuilder.newColumn('paid').withTitle('Has paid?')
-    ];
   })
   .controller("RaceReviewController", function($scope, $http){
     $scope.today = function() {

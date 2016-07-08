@@ -34,9 +34,15 @@
         </div>
         <div class="container-fluid">
           <div class="row">
-              <div class="col-md-12">
-                <participants-table raceid="{{race.id}}" category="Senior 1 Male"></participants-table>
+             <uib-accordion close-others="true">
+              <div class="col-md-12" ng-repeat="category in categories" >
+                <uib-accordion-group is-open="status.open">
+                    <uib-accordion-heading>{{category}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                    </uib-accordion-heading>
+                      <participants-table raceid="{{race.id}}" category="{{category}}"></participants-table>
+                </uib-accordion-group>
               </div>
+            </uib-accordion>
           </div>
         </div>
   </div>

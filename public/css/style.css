@@ -45,3 +45,8 @@ tr.group:hover {
   border-radius: 0;
   box-shadow: none;
 }
+
+label.input-group-addon {
+    min-width: 150px;
+    text-align: left !important;
+}
