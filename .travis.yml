@@ -1,0 +1,11 @@
+language: "node_js"
+sudo: required
+services:
+  - mongodb
+before_script:
+  - mongorestore
+node_js:
+  - "6"
+  - "6.1"
+  - "5.11"
+  - "iojs"

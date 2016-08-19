@@ -48,11 +48,8 @@ describe('Club routes', function(){
     .end(function(err,res){
         // HTTP status should be 200
         res.status.should.equal(200);
-        res.on('data', function(data){
-          var object = JSON.parse(data);
-          expect(data.length).to.equal(3);
-          done();
-        });
+        var object = res.body;
+        expect(object.length).to.equal(3);
         done();
       });
     });
@@ -74,11 +71,65 @@ describe('Club routes', function(){
       .expect(200) // THis is HTTP response
       .end(function(err,res){
           // HTTP status should be 200
-          res.status.should.equal(200);          
+          res.status.should.equal(200);
           var object = res.body;
           expect(object.id).to.equal("004");
           done();
         });
       });
+
+      it('load a club',function(done){
+        request
+        .get('/clubs/001')
+        .expect('Content-type','application/json; charset=utf-8')
+        .expect(200) // THis is HTTP response
+        .end(function(err,res){
+            // HTTP status should be 200
+            res.status.should.equal(200);
+            var object = res.body;
+            expect(object.id).to.equal("001");
+            expect(object.name).to.equal("The Spinning wheels");
+            done();
+          });
+        });
+
+        it('Update a club',function(done){
+          var club = {
+            "id": "001",
+            "name": "The smoothie wheels",
+            "contactId": "002",
+            "web_page": "www.thesmoothiewheels.co.uk",
+            "location": "Belfast",
+            "active": "true"
+          };
+          request
+          .put('/clubs/001')
+          .send(club)
+          .expect('Content-type','application/json; charset=utf-8')
+          .expect(200) // THis is HTTP response
+          .end(function(err,res){
+              // HTTP status should be 200
+              res.status.should.equal(200);
+              var object = res.body;
+              expect(object.id).to.equal("001");
+              expect(object.name).to.equal("The smoothie wheels");
+              done();
+            });
+          });
+
+          it('Delete a club',function(done){
+            request
+            .delete('/clubs/003')
+            .expect('Content-type','application/json; charset=utf-8')
+            .expect(200) // THis is HTTP response
+            .end(function(err,res){
+                // HTTP status should be 200
+                res.status.should.equal(200);
+                var object = res.body;
+                expect(object.id).to.equal("003");
+                expect(object.active).to.equal(false);
+                done();
+              });
+            });
 
   });

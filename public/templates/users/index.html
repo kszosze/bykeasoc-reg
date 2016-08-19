@@ -1,0 +1,21 @@
+<div class="users-wrapper" ng-controller="userListController">
+  <h3>Events coming up</h3>
+  <table class="table table-bordered tabled-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Day of Bird</th>
+          <th>Club</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="user in users">
+        <td>{{user.name}}</td>
+        <td>{{user.surname}}</td>
+        <td>{{user.dob | date}}</td>
+        <td><a ng-href="#/club/{{club.id}}">{{club.name}}</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

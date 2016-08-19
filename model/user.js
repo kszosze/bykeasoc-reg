@@ -10,6 +10,7 @@ var userSchema = new Schema({
     dob: Date,
     password: String,
     admin: Boolean,
+    club_id : String,
     active: Boolean
 });
 

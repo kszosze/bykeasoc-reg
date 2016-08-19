@@ -4,7 +4,7 @@ var expect = require('chai').expect;
 var should = require('chai').should();
 var utils = require('./utils');
 var Race = require('../model/race');
-
+var Participant = require('../model/participant');
 describe('Races', function(){
 
   beforeEach(function (done){
@@ -19,7 +19,7 @@ describe('Races', function(){
         distance:200,
         duration:12,
         organiser_id:"001",
-        fee:[{
+        fees:[{
           id:"001",
           category:"Senior 40+",
           conditions:"Be older than 40 years",
@@ -40,18 +40,7 @@ describe('Races', function(){
           pre_register:false,
           pra_paid:false,
           fee:20
-        }],
-        participants: [
-          {
-            user_id: "001",
-            subscribedOn: new Date("2026","06","01"),
-            category: "Senior 40+",
-            fee_id: "001",
-            licence: "Full UK",
-            club_id: "001",
-            paid: true
-          }
-        ]
+        }]
     };
     Race.create(race,function(error){
       assert.ifError(error);
@@ -71,7 +60,7 @@ describe('Races', function(){
         distance:10,
         duration:2,
         organiser_id:"001",
-        fee:[{
+        fees:[{
           id:"001",
           category:"Senior 40+",
           conditions:"Be older than 40 years",
@@ -92,8 +81,7 @@ describe('Races', function(){
           pre_register:false,
           pra_paid:false,
           fee:20
-        }],
-        participants: []
+        }]
     };
     Race.create(race,function(error, newRace){
       should.not.exist(error);
@@ -149,7 +137,8 @@ describe('Races', function(){
 
   it ('Can add a participant to the race', function(done){
     var participant = {
-      user_id: "002",
+      name: "Joe",
+      surname: "Smith",
       subscribedOn: new Date("2026","06","01"),
       category: "Senior 40+",
       fee_id:"002",
@@ -157,21 +146,17 @@ describe('Races', function(){
       club_id: "002",
       paid: true
     };
-    Race.update({id:"001"},{"$push":{"participants":participant}},function(error,foundRace){
+    Participant.create(participant,function(error,newParticipant){
       should.not.exist(error);
-      should.exist(foundRace);
-      should.exist(foundRace.participants);
-      expect(foundRace.participants).to.contain( participant );
+      should.exist(newParticipant);
     });
     done();
   });
 
   it ('Can remove a participant from a race', function(done){
-    Race.update({id:"001"},{"$pull":{"participants.user_id":"001"}},function(error,foundRace){
+    Participant.findOneAndRemove({id:"001"},'',function(error,foundRace){
       should.not.exist(error);
       should.exist(foundRace);
-      should.exist(foundRace.participants);
-      expect(foundRace.participants.lenght).to.be(0);
     });
     done();
   });

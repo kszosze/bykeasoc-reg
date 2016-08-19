@@ -72,7 +72,7 @@ describe('Clubs', function(){
       web_page: "www.thebrokenwheels.co.uk",
       location: "Hillsboroug"
     };
-    Club.findOneAndUpdate({id:"001"},club,function(error,updateClub){
+    Club.findOneAndUpdate({id:'001'},club,{new: true},function(error,updateClub){
         should.not.exist(error);
         should.exist(updateClub);
         updateClub.should.be.an('object');

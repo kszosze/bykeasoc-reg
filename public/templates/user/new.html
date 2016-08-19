@@ -1,0 +1,48 @@
+<div class="clubs-wrapper">
+  <h2> New Club </h2>
+  <div class="container-fluid">
+      <div class="panel panel-primary">
+          <div class="panel-heading">Data</div>
+          <div class="panel-body">
+              <div class="row">
+                  <div class="col-md-12">
+                    <form name="reviewForm" ng-controller="UserReviewController as userReviewCtrl"
+                            ng-submit="reviewForm.$valid && userReviewCtrl.addReview(userReviewCtrl.user)">
+                        <div class="input-group col-md-6">
+                          <label class="input-group-addon">Name :</label>
+                          <input class="form-control ng-dirty" name="name" ng-model="userReviewCtrl.user.name" type="text" required/>
+                        </div>
+                        <div class="input-group col-md-6">
+                          <label class="input-group-addon">Surname :</label>
+                          <input class="form-control ng-dirty" name="surname" ng-model="userReviewCtrl.user.surname" type="text" required/>
+                        </div>
+                        <div class="input-group col-md-6">
+                          <label class="input-group-addon" for="date">Date of bird :</label>
+                          <input name="date" class="form-control ng-dirty"  uib-datepicker-popup="{{format}}" data-ng-model="userReviewCtrl.user.dob"  is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"/>
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                          </span>
+                        </div>
+                        <div class="input-group col-md-6">
+                          <label class="input-group-addon">Password :</label>
+                          <input class="form-control ng-dirty" name="password" ng-model="userReviewCtrl.user.password" type="password" required/>
+                        </div>
+                        <div class="input-group col-md-6">
+                          <label class="input-group-addon">Club :</label>
+                          <input type="text" name="contact" ng-model="userReviewCtrl.user.clubId"
+                           placeholder="Club name"
+                           uib-typeahead="club as club.name for club in getClubs($viewValue)"
+                           class="form-control"
+                           required
+                           typeahead-min-length="3"
+                           typeahead-loading="loadingClubs">
+                          <i ng-show="loadingClubs" class="input-group-addon glyphicon glyphicon-refresh"></i>
+                        </div>
+                        <input type="submit" value="Submit" />
+                    </form>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="clubs-wrapper" ng-controller="ClubListController">
+  <h3>Club List</h3>
+  <table class="table table-bordered tabled-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Contact</th>
+          <th>Active</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="club in clubs">
+        <td><a ng-href="#/club/{{club.id}}">{{club.name}}</a></td>
+        <td>{{club.location}}</td>
+        <td><a ng-href="#/user/{{user.id}}">{{contact.name}}</a></td>
+        <td> <span ng-if="club.active">Active</span> <span ng-if="!club.active">Disabled</span> </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
