@@ -1,48 +1,39 @@
 {
-  "name": "Race",
-  "plural": "Races",
+  "name": "Participant",
+  "plural": "Participants",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "name": {
+    "subscribed_on": {
+      "type": "date",
+      "required": true
+    },
+    "category": {
       "type": "string",
       "required": true
     },
-    "date": {
-      "type": "date",
-      "required": true
-    },
-    "start_registration": {
-      "type": "date",
-      "required": true
-    },
-    "end_registration": {
-      "type": "date",
-      "required": true
-    },
-    "location": {
+    "license": {
       "type": "string",
       "required": true
     },
-    "open": {
+    "paid": {
       "type": "boolean",
       "required": true,
       "default": false
+    },
+    "valid": {
+      "type": "boolean",
+      "required": true,
+      "default": true
     }
   },
   "validations": [],
   "relations": {
-    "participate": {
-      "type": "hasMany",
-      "model": "People",
-      "foreignKey": "",
-      "through": "Participant"
-    },
-    "fees": {
-      "type": "hasMany",
+    "fee": {
+      "type": "belongsTo",
       "model": "Fee",
       "foreignKey": ""
     }

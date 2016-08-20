@@ -47,5 +47,9 @@
   "People": {
     "dataSource": "bykeassoc",
     "public": true
+  },
+  "Participant": {
+    "dataSource": "bykeassoc",
+    "public": true
   }
 }

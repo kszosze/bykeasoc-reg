@@ -29,7 +29,23 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "administrator": {
+      "type": "belongsTo",
+      "model": "People",
+      "foreignKey": "administrator_id"
+    },
+    "races": {
+      "type": "hasMany",
+      "model": "Race",
+      "foreignKey": ""
+    },
+    "participants": {
+      "type": "hasMany",
+      "model": "Participant",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }
