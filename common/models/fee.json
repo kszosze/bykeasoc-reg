@@ -1,0 +1,32 @@
+{
+  "name": "fee",
+  "plural": "fees",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "conditions": {
+      "type": "string"
+    },
+    "pre_registere": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "pre_paid": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

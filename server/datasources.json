@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "bykeassoc": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "",
+    "database": "bykeaspc-dev",
+    "password": "",
+    "name": "bykeassoc",
+    "user": "",
+    "connector": "mongodb"
+  }
+}
