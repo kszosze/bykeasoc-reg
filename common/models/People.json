@@ -18,7 +18,19 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "races": {
+      "type": "hasMany",
+      "model": "Race",
+      "foreignKey": "",
+      "through": "Participant"
+    },
+    "club": {
+      "type": "belongsTo",
+      "model": "Club",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

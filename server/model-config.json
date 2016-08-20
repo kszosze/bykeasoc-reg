@@ -14,22 +14,23 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "bykeassoc",
+    "public" : false
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "bykeassoc",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "bykeassoc",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "bykeassoc",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "bykeassoc",
     "public": false
   },
   "Club": {
@@ -45,6 +46,10 @@
     "public": true
   },
   "People": {
+    "dataSource": "bykeassoc",
+    "public": true
+  },
+  "Participant": {
     "dataSource": "bykeassoc",
     "public": true
   }
