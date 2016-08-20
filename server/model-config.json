@@ -32,15 +32,19 @@
     "dataSource": "db",
     "public": false
   },
-  "club": {
+  "Club": {
     "dataSource": "bykeassoc",
     "public": true
   },
-  "race": {
+  "Race": {
     "dataSource": "bykeassoc",
     "public": true
   },
-  "fee": {
+  "Fee": {
+    "dataSource": "bykeassoc",
+    "public": true
+  },
+  "People": {
     "dataSource": "bykeassoc",
     "public": true
   }

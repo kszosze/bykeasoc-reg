@@ -1,6 +1,6 @@
 {
-  "name": "race",
-  "plural": "races",
+  "name": "Race",
+  "plural": "Races",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {

@@ -1,6 +1,6 @@
 {
-  "name": "fee",
-  "plural": "fees",
+  "name": "Fee",
+  "plural": "Fees",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
