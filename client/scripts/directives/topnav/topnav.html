@@ -1,0 +1,26 @@
+<nav>
+  <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-left">
+          <li><a href="/">Home</a></li>
+          <li><a href="#/events">Events</a></li>
+          <li><a href="/Help">Help</a></li>
+          <li><a href="/Contact">Contact</a></li>
+          <li><a href="/Login">Login</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li>
+              <a href="/ShoppingCart"><span class="glyphicon glyphicon-shopping-cart"></span>Basket</a>
+          </li>
+          <li uib-dropdown on-toggle="toggled(open)">
+                <a href id="simple-dropdown" uib-dropdown-toggle>
+                  Admin
+                </a>
+                <ul class="dropdown-menu nav navbar-nav" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                  <li role="menuitem"><a href="#/race/new">New Event</a></li>
+                  <li role="menuitem"><a href="#/club/new">New Club</a></li>
+                  <li role="menuitem"><a href="#/user/new">New User</a></li>
+                </ul>
+            </li>
+      </ul>
+  </div>
+</nav>
