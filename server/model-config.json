@@ -14,43 +14,43 @@
     ]
   },
   "User": {
-    "dataSource": "bykeassoc",
+    "dataSource": "bykeasoc",
     "public" : false
   },
   "AccessToken": {
-    "dataSource": "bykeassoc",
+    "dataSource": "bykeasoc",
     "public": false
   },
   "ACL": {
-    "dataSource": "bykeassoc",
+    "dataSource": "bykeasoc",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "bykeassoc",
+    "dataSource": "bykeasoc",
     "public": false
   },
   "Role": {
-    "dataSource": "bykeassoc",
+    "dataSource": "bykeasoc",
     "public": false
   },
   "Club": {
-    "dataSource": "bykeassoc",
+    "dataSource": "bykeasoc",
     "public": true
   },
   "Race": {
-    "dataSource": "bykeassoc",
+    "dataSource": "bykeasoc",
     "public": true
   },
   "Fee": {
-    "dataSource": "bykeassoc",
+    "dataSource": "bykeasoc",
     "public": true
   },
   "People": {
-    "dataSource": "bykeassoc",
+    "dataSource": "bykeasoc",
     "public": true
   },
   "Participant": {
-    "dataSource": "bykeassoc",
+    "dataSource": "bykeasoc",
     "public": true
   }
 }

@@ -3,13 +3,13 @@
     "name": "db",
     "connector": "memory"
   },
-  "bykeassoc": {
+  "bykeasoc": {
     "host": "localhost",
     "port": 27017,
     "url": "",
-    "database": "bykeaspc-dev",
+    "database": "bykeasoc-dev",
     "password": "",
-    "name": "bykeassoc",
+    "name": "bykeasoc",
     "user": "",
     "connector": "mongodb"
   }

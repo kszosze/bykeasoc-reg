@@ -1,7 +1,29 @@
 'use strict'
 
 angular
-  .module('bykeassoc', ['ui.router','ui.bootstrap','lb-servies'])
-  .config(function($stateProvider, $urlRouterProvides){
-
+  .module('bykeasoc', ['ui.router','ui.bootstrap','lbServices'])
+  .constant('Configuration',{
+    appName: 'Byke Asoc'
+  })
+  .config(function($stateProvider, $urlRouterProvider){
+    $urlRouterProvider.when('/home','/main/home');
+    $urlRouterProvider.otherwise('/main');
+    $stateProvider
+    .state('plain', {
+      abstract: true,
+      url: '',
+      templateUrl: 'views/layouts/plain.html'
+    })
+    .state('boxed', {
+      abstract: true,
+      url: '',
+      parent: 'plain',
+      templateUrl: 'views/layouts/boxed.html'
+    })
+    .state('main', {
+      url: '/main',
+      parent: 'plain',
+      templateUrl: 'views/layouts/main.html',
+      controller: 'MainCtrl'
+    })
   });
