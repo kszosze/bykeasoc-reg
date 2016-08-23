@@ -1,0 +1,87 @@
+.container {
+    background-color: transparent;
+}
+
+.header {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  background-color: lightblue;
+}
+
+th {
+  background-color: lightblue;
+  color: white;
+  text-align: center;
+}
+
+nav.navbar-default {
+  background-color: transparent;
+  border-color: transparent !important;
+  margin-bottom: 0px;
+}
+
+.navbar-default .navbar-collapse {
+  border-color: transparent !important;
+}
+
+div.navbar-collapse.collapse {
+	display: block;
+	overflow: hidden;
+	max-height: 0px;
+	-webkit-transition: max-height .3s ease;
+	-moz-transition: max-height .3s ease;
+	-o-transition: max-height .3s ease;
+	transition: max-height .3s ease;
+}
+
+div.navbar-collapse.collapse.in {
+	max-height: 2000px;
+  background-color: transparent;
+  border-color: transparent;
+}
+li > a {
+  font-weight: bold;
+}
+
+tr.group,
+tr.group:hover {
+    background-color: #ddd !important;
+}
+
+.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+}
+!
+.ng-valid.ng-dirty {
+    border-color: #78FA89;
+}
+.typeahead-demo .custom-popup-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  background-color: #f9f9f9;
+}
+
+.typeahead-demo .custom-popup-wrapper > .message {
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  color: #868686;
+}
+
+.typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+  position: static;
+  float: none;
+  display: block;
+  min-width: 160px;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+label.input-group-addon {
+    min-width: 150px;
+    text-align: left !important;
+}
