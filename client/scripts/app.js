@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 angular
   .module('bykeasoc', ['ui.router','ui.bootstrap','lbServices'])
@@ -25,5 +25,23 @@ angular
       parent: 'plain',
       templateUrl: 'views/layouts/main.html',
       controller: 'MainCtrl'
+    })
+    .state('clubs', {
+      url: '/club',
+      parent: 'main',
+      templateUrl: 'views/pages/clubs.html',
+      controller: 'ClubCtrl'
+    })
+    .state('races', {
+      url: '/race',
+      parent: 'main',
+      templateUrl: 'views/pages/races.html',
+      controller: 'RaceCtrl'
+    })
+    .state('racers', {
+      url: '/racers',
+      parent: 'main',
+      templateUrl: 'views/pages/racers.html',
+      controller: 'PlayerCtrl'
     })
   });

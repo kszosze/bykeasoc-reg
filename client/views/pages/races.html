@@ -1,0 +1,144 @@
+<div class="conter-wrapper">
+  <div class="container-fluid home-page col-md-12">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Races</h3>
+      </div>
+      <div class="panel-body">
+        <table class=" table-bordered tabled-striped">
+          <thead>
+          <tr>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="race in races">
+            <td>{{race.date | date}}</td>
+            <td><a ng-href="#/race/{{race.id}}">{{race.name}}</a></td>
+            <td> <span ng-if="race.open">Open</span> <span ng-if="!race.open">Close</span> </td>
+            <td>
+              <button type="button"
+                      class="btn btn-info btn-circle btn-lg"
+                      ng-click="editRace(club)">
+                <i class="fa fa-edit"></i>
+              </button>
+              <button type="button"
+                      class="btn btn-danger btn-circle btn-lg"
+                      ng-click="deleteRace(club)">
+                <i class="fa fa-trash-o"></i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <button type="button"
+                class="btn btn-primary btn-circle btn-lg"
+                ng-click="createRace()">
+          <i class="fa fa-cube"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <script type="text/ng-template" id="confirmDeleteRace.html">
+      <div class="modal-header">
+        <h3 class="modal-title">{{ title }}</h3>
+      </div>
+      <div class="modal-body">
+        <div class="high-padding text-center">{{ text }}</div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default btn-rounded" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary btn-rounded" ng-click="ok()">Ok</button>
+      </div>
+    </script>
+    <script type="text/ng-template" id="editRace.html">
+      <div class="modal-header">
+        <h3 class="modal-title">{{ title }}</h3>
+      </div>
+      <div class="modal-body">
+        <div class="panel panel-info">
+          <div class="panel-body">
+            <form name="formRace" novalidate>
+              <div class="form-group">
+                <div class="input-group">
+                  <label form="raceName">Name</label>
+                  <input type="text"
+                         class="form-control"
+                         name="raceName"
+                         placeholder="Enter race name"
+                         ng-model="item.name"
+                         required>
+                  <div ng-show="formRace.$submitted || formRace.raceName.$touched">
+                    <div ng-show="formRace.raceName.$error.required">Please, can you tell your name?.</div>
+                  </div>
+                </div>
+                <div class="input-group">
+                  <label form="raceDate">Date</label>
+                  <input name="date"
+                         class="form-control ng-dirty"
+                         uib-datepicker-popup="{{format}}"
+                         data-ng-model="formRace.date"
+                         is-open="popup1.opened"
+                         datepicker-options="dateOptions"
+                         ng-required="true"
+                         close-text="Close"
+                         alt-input-formats="altInputFormats"/>
+                  <span class="input-group-btn">
+                          <button type="button"
+                                  class="btn btn-default"
+                                  ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </div>
+
+                <div class="input-group">
+                  <label form="raceStartRegistration">Start Registration</label>
+                  <input name="startRegistration"
+                         class="form-control ng-dirty"
+                         uib-datepicker-popup="{{format}}"
+                         data-ng-model="formRace.start_registration"
+                         is-open="popup2.opened"
+                         datepicker-options="dateOptions"
+                         ng-required="true"
+                         close-text="Close"
+                         alt-input-formats="altInputFormats"/>
+                  <span class="input-group-btn">
+                          <button type="button"
+                                  class="btn btn-default"
+                                  ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </div>
+
+                <div class="input-group">
+                  <label form="raceEndRegistration">End Registration</label>
+                  <input name="endRegistration"
+                         class="form-control ng-dirty"
+                         uib-datepicker-popup="{{format}}"
+                         data-ng-model="formRace.end_registration"
+                         is-open="popup3.opened"
+                         datepicker-options="dateOptions"
+                         ng-required="true"
+                         close-text="Close"
+                         alt-input-formats="altInputFormats"/>
+                  <span class="input-group-btn">
+                          <button type="button"
+                                  class="btn btn-default"
+                                  ng-click="open3()"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default btn-rounded" type="button" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary btn-rounded" type="submit" ng-click="ok()">Ok</button>
+      </div>
+    </script>
+  </div>
+</div>
+

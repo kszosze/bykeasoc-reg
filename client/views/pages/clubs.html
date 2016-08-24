@@ -1,0 +1,139 @@
+<div class="conter-wrapper">
+  <div class="container-fluid home-page col-md-12">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Clubs</h3>
+      </div>
+      <div class="panel-body">
+        <table class=" table-bordered tabled-striped">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Contact</th>
+            <th>Active</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="club in clubs">
+            <td><a ng-href="#/club/{{club.id}}">{{club.name}}</a></td>
+            <td>{{club.location}}</td>
+            <td><a ng-href="#/user/{{user.id}}">{{contact.name}}</a></td>
+            <td> <span ng-if="club.active">Active</span> <span ng-if="!club.active">Disabled</span> </td>
+            <td>
+              <button type="button"
+                      class="btn btn-info btn-circle btn-lg"
+                      ng-click="editClub(club)">
+                          <i class="fa fa-edit"></i>
+              </button>
+              <button type="button"
+                      class="btn btn-danger btn-circle btn-lg"
+                      ng-click="deleteClub(club)">
+                          <i class="fa fa-trash-o"></i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <button type="button"
+                class="btn btn-primary btn-circle btn-lg"
+                ng-click="createClub()">
+                    <i class="fa fa-cube"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <script type="text/ng-template" id="confirmDeleteClub.html">
+      <div class="modal-header">
+        <h3 class="modal-title">{{ title }}</h3>
+      </div>
+      <div class="modal-body">
+        <div class="high-padding text-center">{{ text }}</div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default btn-rounded" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary btn-rounded" ng-click="ok()">Ok</button>
+      </div>
+    </script>
+    <script type="text/ng-template" id="editClub.html">
+      <div class="modal-header">
+        <h3 class="modal-title">{{ title }}</h3>
+      </div>
+      <div class="modal-body">
+        <div class="panel panel-info">
+          <div class="panel-body">
+            <form name="formRace"  ng-submit="formRace.$valid"
+                  novalidate>
+              <div class="form-group">
+                <div class="input-group">
+                  <label form="raceName">Name</label>
+                  <input type="text"
+                         class="form-control"
+                         name="raceName"
+                         placeholder="Enter club name"
+                         ng-model="item.name"
+                         required>
+                  <div ng-show="formRace.$submitted || formRace.raceName.$touched">
+                    <div ng-show="formRace.raceName.$error.required">Please, can you tell your name?.</div>
+                  </div>
+                </div>
+                <div class="input-group">
+                  <label form="clubWebpage">Web page</label>
+                  <input type="text"
+                         class="form-control"
+                         name="clubWebpage"
+                         placeholder="Enter club webpage"
+                         ng-model="item.webpage">
+                </div>
+                <div class="input-group">
+                  <label form="clubLocation">Location</label>
+                  <input type="text"
+                         class="form-control"
+                         name="clubLocation"
+                         placeholder="Enter club location"
+                         ng-model="item.location"
+                         required>
+                  <div ng-show="formRace.$submitted || formRace.clubLocation.$touched">
+                    <div ng-show="formRace.clubLocation.$error.required">Please, can you tell your Club Location?.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <label class="input-group-addon">Contact :</label>
+                  <input type="text" name="contact" ng-model="raceReviewCtrl.club.contactId"
+                         placeholder="Contact User"
+                         uib-typeahead="user as user.name for user in getUsers($viewValue)"
+                         class="form-control"
+                         required
+                         typeahead-min-length="3"
+                         typeahead-loading="loadingUsers">
+                  <i ng-show="loadingUsers" class="input-group-addon glyphicon glyphicon-refresh"></i>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <label for="clubActive">Is active</label>
+                  <div class="onoffswitch">
+                    <input type="checkbox" name="clubActive" class="onoffswitch-checkbox" id="clubActive"
+                           ng-model="item.active">
+                    <label class="onoffswitch-label" for="clubActive">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default btn-rounded" type="button" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary btn-rounded" type="submit" ng-click="ok()">Ok</button>
+      </div>
+    </script>
+  </div>
+</div>

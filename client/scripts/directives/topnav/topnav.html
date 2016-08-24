@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
       <ul class="nav navbar-nav navbar-left">
           <li><a href="/">Home</a></li>
-          <li><a href="#/events">Events</a></li>
+          <li><a ui-sref="races">Events</a></li>
           <li><a href="/Help">Help</a></li>
           <li><a href="/Contact">Contact</a></li>
           <li><a href="/Login">Login</a></li>
@@ -24,8 +24,8 @@
                   Admin
                 </a>
                 <ul class="dropdown-menu nav navbar-nav" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-                  <li role="menuitem"><a href="#/race/new">New Event</a></li>
-                  <li role="menuitem"><a href="#/club/new">New Club</a></li>
+                  <li role="menuitem"><a ui-sref="races">Races</a></li>
+                  <li role="menuitem"><a ui-sref="clubs">Clubs</a></li>
                   <li role="menuitem"><a href="#/user/new">New User</a></li>
                 </ul>
             </li>
