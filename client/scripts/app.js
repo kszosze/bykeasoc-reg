@@ -42,7 +42,7 @@ angular
       url: '/racers',
       parent: 'main',
       templateUrl: 'views/pages/racers.html',
-      controller: 'PlayerCtrl'
+      controller: 'RacerCtrl'
     })
   })
   .config(function(LoopBackResourceProvider) {
