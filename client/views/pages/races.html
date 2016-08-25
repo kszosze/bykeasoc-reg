@@ -22,12 +22,12 @@
             <td>
               <button type="button"
                       class="btn btn-info btn-circle btn-lg"
-                      ng-click="editRace(club)">
+                      ng-click="editRace(race)">
                 <i class="fa fa-edit"></i>
               </button>
               <button type="button"
                       class="btn btn-danger btn-circle btn-lg"
-                      ng-click="deleteRace(club)">
+                      ng-click="deleteRace(race)">
                 <i class="fa fa-trash-o"></i>
               </button>
             </td>
@@ -65,19 +65,44 @@
             <form name="formRace" novalidate>
               <div class="form-group">
                 <div class="input-group">
-                  <label form="raceName">Name</label>
+                  <label ng-form="raceName">Name</label>
                   <input type="text"
                          class="form-control"
                          name="raceName"
                          placeholder="Enter race name"
                          ng-model="item.name"
-                         required>
+                         ng-required="true">
                   <div ng-show="formRace.$submitted || formRace.raceName.$touched">
-                    <div ng-show="formRace.raceName.$error.required">Please, can you tell your name?.</div>
+                    <div ng-show="formRace.raceName.$error.required">Please, can you tell the race name?.</div>
                   </div>
                 </div>
                 <div class="input-group">
-                  <label form="raceDate">Date</label>
+                  <label ng-form="raceLocation">Location</label>
+                  <input type="text"
+                         class="form-control"
+                         name="raceLocation"
+                         placeholder="Enter race location"
+                         ng-model="item.location"
+                         ng-required="true">
+                  <div ng-show="formRace.$submitted || formRace.raceLocation.$touched">
+                    <div ng-show="formRace.raceLocation.$error.required">Please, can you tell the race location?.</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group">
+                    <label class="input-group-addon" ng-form="raceClub">Organiser Club :</label>
+                    <input type="text" name="raceClub" ng-model="item.club"
+                           placeholder="Organiser Club"
+                           uib-typeahead="club as club.name for clubs in getClubs($viewValue)"
+                           class="form-control"
+                           ng-required="true"
+                           typeahead-min-length="3"
+                           typeahead-loading="loadingClubs">
+                    <i ng-show="loadingClubs" class="input-group-addon glyphicon glyphicon-refresh"></i>
+                  </div>
+                </div>
+                <div class="input-group">
+                  <label ng-form="raceDate">Date</label>
                   <input name="date"
                          class="form-control ng-dirty"
                          uib-datepicker-popup="{{format}}"
@@ -95,7 +120,7 @@
                 </div>
 
                 <div class="input-group">
-                  <label form="raceStartRegistration">Start Registration</label>
+                  <label ng-form="raceStartRegistration">Start Registration</label>
                   <input name="startRegistration"
                          class="form-control ng-dirty"
                          uib-datepicker-popup="{{format}}"
@@ -113,7 +138,7 @@
                 </div>
 
                 <div class="input-group">
-                  <label form="raceEndRegistration">End Registration</label>
+                  <label ng-form="raceEndRegistration">End Registration</label>
                   <input name="endRegistration"
                          class="form-control ng-dirty"
                          uib-datepicker-popup="{{format}}"
@@ -135,8 +160,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-default btn-rounded" type="button" ng-click="cancel()">Cancel</button>
-        <button class="btn btn-primary btn-rounded" type="submit" ng-click="ok()">Ok</button>
+        <button type="button" class="btn btn-default btn-rounded" ng-click="cancel()">Cancel </button>
+        <button type="button" class="btn btn-primary btn-rounded" ng-disabled="formRace.$invalid" ng-click="ok()">Ok</button>
       </div>
     </script>
   </div>

@@ -662,6 +662,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "POST",
             },
 
+            // INTERNAL. Use Race.club() instead.
+            "::get::Race::club": {
+              url: urlBase + "/Races/:id/club",
+              method: "GET",
+            },
+
             // INTERNAL. Use People.club() instead.
             "::get::People::club": {
               url: urlBase + "/Peoples/:id/club",
@@ -1535,6 +1541,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         urlBase + "/Races/:id",
           { 'id': '@id' },
           {
+
+            // INTERNAL. Use Race.club() instead.
+            "prototype$__get__club": {
+              url: urlBase + "/Races/:id/club",
+              method: "GET",
+            },
 
             // INTERNAL. Use Race.fees.findById() instead.
             "prototype$__findById__fees": {
@@ -2500,6 +2512,42 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         */
         R.modelName = "Race";
 
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Race#club
+             * @methodOf lbServices.Race
+             *
+             * @description
+             *
+             * Fetches belongsTo relation club.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `refresh` – `{boolean=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Club` object.)
+             * </em>
+             */
+        R.club = function() {
+          var TargetResource = $injector.get("Club");
+          var action = TargetResource["::get::Race::club"];
+          return action.apply(R, arguments);
+        };
     /**
      * @ngdoc object
      * @name lbServices.Race.fees

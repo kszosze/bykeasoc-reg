@@ -79,7 +79,7 @@ angular.module('bykeasoc')
     $uibModalInstance.dismiss('cancel');
   }
 })
-.controller('ModalEditRaceCtrl', function($scope, $uibModalInstance, item) {
+.controller('ModalEditRaceCtrl', function($scope, $uibModalInstance, Club, item) {
   $scope.isNew = (item === null);
   if ($scope.isNew) {
     $scope.item = {
@@ -162,4 +162,23 @@ angular.module('bykeasoc')
     return '';
   }
 
+  $scope.getClubs = function(val) {
+    return Club.find({where : {name: {like: '%'+val+'%'}}});
+  };
+
+  $scope.ngModelOptionsSelected = function(value) {
+    var _selected;
+    if (arguments.length) {
+      _selected = value.id;
+    }
+    return _selected;
+  };
+
+  $scope.modelOptions = {
+    debounce: {
+      default: 500,
+      blur: 250
+    },
+    getterSetter: true
+  };
 });

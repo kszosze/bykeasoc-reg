@@ -44,4 +44,24 @@ angular
       templateUrl: 'views/pages/racers.html',
       controller: 'PlayerCtrl'
     })
+  })
+  .config(function(LoopBackResourceProvider) {
+
+    // Use a custom auth header instead of the default 'Authorization'
+    LoopBackResourceProvider.setAuthHeader('X-Access-Token');
+
+    // Change the URL where to access the LoopBack REST API server
+    LoopBackResourceProvider.setUrlBase('http://localhost:3000/');
+  })
+  .controller('LoginCtrl', function($scope, User, $location) {
+    $scope.login = function() {
+      $scope.loginResult = User.login($scope.credentials,
+        function () {
+          var next = $location.nextAfterLogin || '/';
+          $location.nextAfterLogin = null;
+          $location.path(next);
+        }, function (res) {
+          // error
+        });
+    }
   });

@@ -45,6 +45,11 @@
       "type": "hasMany",
       "model": "Fee",
       "foreignKey": ""
+    },
+    "club": {
+      "type": "belongsTo",
+      "model": "Club",
+      "foreignKey": ""
     }
   },
   "acls": [

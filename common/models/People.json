@@ -7,6 +7,14 @@
     "validateUpsert": true
   },
   "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "surname": {
+      "type": "string",
+      "required": true
+    },
     "day_of_birth": {
       "type": "date",
       "required": true
