@@ -98,16 +98,19 @@ angular.module('bykeasoc')
     opened: false
   };
 
+  var _selected;
+  $scope.selected = undefined;
+
   $scope.getClubs = function(val) {
     return Club.find({where : {name: {like: '%'+val+'%'}}});
   };
 
   $scope.ngModelOptionsSelected = function(value) {
-    var _selected;
     if (arguments.length) {
       _selected = value.id;
+    }else {
+      return _selected;
     }
-    return _selected;
   };
 
   $scope.modelOptions = {

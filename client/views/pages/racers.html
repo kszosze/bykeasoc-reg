@@ -91,28 +91,32 @@
                   </div>
                 </div>
                 <div class="input-group">
-                  <label class="input-group-addon" ng-form="raceLocation">Location</label>
+                  <label class="input-group-addon" ng-form="racerLocation">Location</label>
                   <input type="text"
                          class="form-control"
-                         name="raceLocation"
-                         placeholder="Enter race location"
+                         name="racerLocation"
+                         placeholder="Enter racer location"
                          ng-model="item.location"
                          ng-required="true">
-                  <div ng-show="formRace.$submitted || formRace.raceLocation.$touched">
-                    <div ng-show="formRace.raceLocation.$error.required">Please, can you tell the race location?.</div>
+                  <div ng-show="formRacer.$submitted || formRacer.raceLocation.$touched">
+                    <div ng-show="formRacer.raceLocation.$error.required">Please, can you tell the race location?.</div>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group">
-                    <label class="input-group-addon" ng-form="raceClub">Organiser Club :</label>
-                    <input type="text" name="raceClub" ng-model="item.club"
-                           placeholder="Organiser Club"
+                    <label class="input-group-addon" ng-form="racerClub">Organiser Club :</label>
+                    <input type="text" name="racerClub" ng-model="item.club"
+                           placeholder="Racer Club"
                            uib-typeahead="club as club.name for clubs in getClubs($viewValue)"
                            class="form-control"
                            ng-required="true"
                            typeahead-min-length="3"
-                           typeahead-loading="loadingClubs">
-                    <i ng-show="loadingClubs" class="input-group-addon glyphicon glyphicon-refresh"></i>
+                           typeahead-loading="loadingClubs"
+                           typeahead-no-results="noResults">
+                    <i ng-show="loadingClubs" class="glyphicon glyphicon-refresh"></i>
+                  </div>
+                  <div ng-show="noResults">
+                    <i class="glyphicon glyphicon-remove"></i> No Results Found
                   </div>
                 </div>
                 <div class="input-group">

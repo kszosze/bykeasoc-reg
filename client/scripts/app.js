@@ -51,7 +51,7 @@ angular
     LoopBackResourceProvider.setAuthHeader('X-Access-Token');
 
     // Change the URL where to access the LoopBack REST API server
-    LoopBackResourceProvider.setUrlBase('http://localhost:3000/');
+    LoopBackResourceProvider.setUrlBase('http://localhost:3000/api/');
   })
   .controller('LoginCtrl', function($scope, User, $location) {
     $scope.login = function() {
