@@ -21,7 +21,7 @@
             <td>{{club.location}}</td>
             <td><a ng-href="#/user/{{user.id}}">{{contact.name}}</a></td>
             <td> <span ng-if="club.active">Active</span> <span ng-if="!club.active">Disabled</span> </td>
-            <td>
+            <td ng-show="isAdmin">
               <button type="button"
                       class="btn btn-info btn-circle btn-lg"
                       ng-click="editClub(club)">
@@ -38,7 +38,8 @@
         </table>
         <button type="button"
                 class="btn btn-primary btn-circle btn-lg"
-                ng-click="createClub()">
+                ng-click="createClub()"
+                ng-show="isAdmin">
                     <i class="fa fa-cube"></i>
         </button>
       </div>
