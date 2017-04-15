@@ -1,57 +1,57 @@
 {
-  "name": "People",
-  "plural": "Peoples",
-  "base": "User",
-  "idInjection": true,
-  "options": {
-    "validateUpsert": true
-  },
-  "properties": {
-    "name": {
-      "type": "string",
-      "required": true
+    "name": "People",
+    "plural": "Peoples",
+    "base": "User",
+    "idInjection": true,
+    "injectOptionsFromRemoteContext": true,
+    "options": {
+        "validateUpsert": true
     },
-    "surname": {
-      "type": "string",
-      "required": true
+    "properties": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "surname": {
+            "type": "string",
+            "required": true
+        },
+        "day_of_birth": {
+            "type": "date",
+            "required": true
+        },
+        "active": {
+            "type": "boolean",
+            "required": true,
+            "default": true
+        }
     },
-    "day_of_birth": {
-      "type": "date",
-      "required": true
+    "validations": [],
+    "relations": {
+        "races": {
+            "type": "hasMany",
+            "model": "Race",
+            "foreignKey": "",
+            "through": "Participant"
+        },
+        "club": {
+            "type": "belongsTo",
+            "model": "Club",
+            "foreignKey": ""
+        }
     },
-    "active": {
-      "type": "boolean",
-      "required": true,
-      "default": true
-    }
-  },
-  "validations": [],
-  "relations": {
-    "races": {
-      "type": "hasMany",
-      "model": "Race",
-      "foreignKey": "",
-      "through": "Participant"
-    },
-    "club": {
-      "type": "belongsTo",
-      "model": "Club",
-      "foreignKey": ""
-    }
-  },
-  "acls": [
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW"
-    },
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW"
-    }
-  ],
-  "methods": {}
+    "acls": [{
+            "accessType": "*",
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW"
+        },
+        {
+            "accessType": "*",
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW"
+        }
+    ],
+    "methods": {}
 }

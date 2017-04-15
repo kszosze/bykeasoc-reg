@@ -8,5 +8,8 @@
     "angular-bootstrap": "^2.1.1",
     "angular-resource": "^1.5.8",
     "font-awesome": "fontawesome#^4.6.3"
+  },
+  "devDependencies": {
+    "ui-router-extras": "^0.1.3"
   }
 }

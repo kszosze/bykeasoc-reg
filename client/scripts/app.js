@@ -56,19 +56,20 @@ angular
     .controller('LoginCtrl', function($scope, User, $location) {
         $scope.login = function() {
             $scope.loginResult = User.login($scope.credentials)
-            .$promise
-            .then(function(response) { 
-              $scope.currentUser = { 
-                id: response.user.id, 
-                tokenId: response.id, 
-                email: response.user.email }; 
-              });
+                .$promise
+                .then(function(response) {
+                    $scope.currentUser = {
+                        id: response.user.id,
+                        tokenId: response.id,
+                        email: response.user.email
+                    };
+                });
         }
         $scope.logout = function() {
             $scope.loginResult = User.logout()
-              .$promise
-              .then(function() {
-                $scope.currentUser = null;
-              });
+                .$promise
+                .then(function() {
+                    $scope.currentUser = null;
+                });
         }
     });

@@ -17,7 +17,7 @@
                     <tbody>
                         <tr ng-repeat="race in races">
                             <td>{{race.date | date}}</td>
-                            <td><a ng-href="#/race/{{race.id}}">{{race.name}}</a></td>
+                            <td><a ng-href="#/races/{{race.id}}">{{race.name}}</a></td>
                             <td> <span ng-if="race.open">Open</span> <span ng-if="!race.open">Close</span> </td>
                             <td ng-show="isAdmin">
                                 <button type="button" class="btn btn-info btn-circle btn-lg" ng-click="editRace(race)">

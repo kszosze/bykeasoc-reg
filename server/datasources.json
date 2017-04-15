@@ -1,16 +1,16 @@
 {
-  "db": {
-    "name": "db",
-    "connector": "memory"
-  },
-  "bykeasoc": {
-    "host": "localhost",
-    "port": 27017,
-    "url": "",
-    "database": "bykeasoc-dev",
-    "password": "",
-    "name": "bykeasoc",
-    "user": "",
-    "connector": "mongodb"
-  }
+    "db": {
+        "name": "db",
+        "connector": "memory"
+    },
+    "bykeasoc": {
+        "host": "192.168.99.100",
+        "port": 32768,
+        "url": "",
+        "database": "bykeasoc-dev",
+        "password": "",
+        "name": "bykeasoc",
+        "user": "",
+        "connector": "mongodb"
+    }
 }
